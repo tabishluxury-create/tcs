@@ -1,0 +1,36 @@
+services:
+  - type: web
+    name: student-collective-site
+    runtime: python
+    plan: starter
+    region: singapore
+    buildCommand: pip install -r requirements-tsc-admin.txt
+    startCommand: gunicorn --bind 0.0.0.0:$PORT --workers 1 --threads 4 tsc_server:app
+    healthCheckPath: /healthz
+    disk:
+      name: tsc-auth-data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: TSC_ENV
+        value: production
+      - key: TSC_AUTH_DATABASE
+        value: /var/data/tsc-auth.sqlite3
+      - key: TSC_COOKIE_SECURE
+        value: "true"
+      - key: TSC_SESSION_SECRET
+        generateValue: true
+      - key: TSC_ADMIN_PASSWORD
+        sync: false
+      - key: TSC_MASTER_PASSWORD
+        sync: false
+      - key: TSC_RATE_LIMIT_STORAGE_URI
+        fromService:
+          type: keyvalue
+          name: tsc-rate-limit
+          property: connectionString
+  - type: keyvalue
+    name: tsc-rate-limit
+    plan: free
+    region: singapore
+    ipAllowList: []

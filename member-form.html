@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#171619">
+  <meta name="description" content="Register to join The Student Collective.">
+  <title>Member form — The Student Collective</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+    :root {
+      color-scheme: dark;
+      --ink: #171619;
+      --paper: #f1eee7;
+      --muted: #aaa6a0;
+      --acid: #d8ff39;
+      --line: rgba(241, 238, 231, .16);
+      --mono: "DM Mono", monospace;
+      --sans: "Space Grotesk", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      min-height: 100vh; margin: 0; position: relative; isolation: isolate;
+      background: var(--ink); color: var(--paper);
+      font-family: var(--sans); -webkit-font-smoothing: antialiased;
+    }
+    body::before {
+      position: fixed; z-index: -1; inset: 0; content: "";
+      background:
+        radial-gradient(ellipse at 78% 18%, rgba(156, 123, 255, .19), transparent 34%),
+        radial-gradient(ellipse at 12% 78%, rgba(216, 255, 57, .08), transparent 30%),
+        radial-gradient(ellipse at 50% 110%, rgba(106, 62, 124, .2), transparent 44%),
+        linear-gradient(145deg, #171619 10%, #1d1b20 55%, #171619);
+      pointer-events: none;
+    }
+    a { color: inherit; text-decoration: none; }
+    .page { width: min(1160px, calc(100% - 48px)); margin: 0 auto; }
+    header { min-height: 76px; display: flex; align-items: center; border-bottom: 1px solid var(--line); }
+    .brand { font-size: 20px; font-weight: 700; letter-spacing: -.08em; }
+    .brand span { color: var(--acid); }
+    main { padding: 58px 0 68px; }
+    .registration-layout {
+      display: grid; grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr);
+      align-items: center; gap: clamp(34px, 6vw, 86px);
+    }
+    .intro-panel { position: relative; padding: 10px 0 22px; }
+    .eyebrow { color: var(--acid); font: 11px var(--mono); letter-spacing: .12em; text-transform: uppercase; }
+    .eyebrow::before {
+      display: inline-block; width: 7px; height: 7px; margin: 0 10px 1px 0;
+      border-radius: 50%; background: var(--acid); content: "";
+    }
+    h1 { margin: 20px 0 16px; font-size: clamp(46px, 6vw, 76px); line-height: .91; letter-spacing: -.075em; }
+    h1 span { color: var(--acid); }
+    .intro { max-width: 430px; margin: 0; color: var(--muted); font-size: 15px; line-height: 1.75; }
+    .club-art {
+      height: 220px; position: relative; display: grid; place-items: center; margin: 26px 0 24px;
+      overflow: hidden; border: 1px solid #ffffff16; border-radius: 4px;
+      background:
+        linear-gradient(#ffffff08 1px, transparent 1px),
+        linear-gradient(90deg, #ffffff08 1px, transparent 1px),
+        radial-gradient(ellipse at 50% 45%, #9c7bff38, transparent 58%), #ffffff04;
+      background-size: 24px 24px, 24px 24px, auto, auto;
+    }
+    .club-art::before, .club-art::after {
+      position: absolute; width: 220px; height: 220px; border: 1px solid #d8ff3928;
+      border-radius: 50%; content: "";
+    }
+    .club-art::after { width: 270px; height: 270px; border-color: #ffffff12; }
+    .art-record {
+      width: 154px; aspect-ratio: 1; position: absolute; z-index: 1; top: 32px; right: 9%;
+      display: grid; place-items: center; border: 1px solid #ffffff9c; border-radius: 50%;
+      background: repeating-radial-gradient(circle, #ffffff14 0 1px, transparent 2px 7px),
+        conic-gradient(from 18deg, #62576e, #d5cae1, #7164a0, #eee1cc, #66767d, #d4d0c7, #7c6388, #e9d9c4, #62576e);
+      box-shadow: 0 16px 45px #0008, inset 0 0 0 9px #17161945;
+      animation: spin 18s linear infinite;
+    }
+    .art-record::before {
+      width: 35px; height: 35px; border: 7px solid var(--acid); border-radius: 50%;
+      background: var(--ink); box-shadow: 0 0 0 2px #17161966; content: "";
+    }
+    .cassette-illustration {
+      width: min(280px, 74%); height: 152px; position: absolute; z-index: 2; top: 30px; left: 6%;
+      padding: 11px 13px 10px; border: 2px solid #3c3542; border-radius: 9px;
+      background: linear-gradient(145deg, #f1eee7, #cfc8b8);
+      box-shadow: 0 15px 24px #0008, inset 0 0 0 3px #ffffffb8;
+      transform: rotate(-9deg); animation: cassette-float 4s ease-in-out infinite;
+    }
+    .cassette-topline { display: flex; justify-content: space-between; color: #36313a; font: 7px var(--mono); letter-spacing: .06em; }
+    .cassette-label {
+      height: 73px; position: relative; display: flex; flex-direction: column; justify-content: center;
+      gap: 3px; margin-top: 7px; padding: 8px 10px; overflow: hidden;
+      border: 1px solid #28252a; background: linear-gradient(110deg, #f5c432 0 72%, #ed9a40 72%);
+      color: #28252a; box-shadow: inset 0 0 0 3px #fff8;
+    }
+    .cassette-label::after {
+      position: absolute; top: -16px; right: 28px; width: 14px; height: 105px; content: "";
+      background: repeating-linear-gradient(180deg, #28252a 0 5px, transparent 5px 11px);
+      transform: rotate(22deg);
+    }
+    .cassette-label small { font: 6px var(--mono); letter-spacing: .08em; }
+    .cassette-label strong { font-size: 17px; line-height: .85; letter-spacing: -.06em; }
+    .cassette-label span { font: 6px var(--mono); letter-spacing: .12em; }
+    .cassette-window {
+      position: absolute; right: 15px; bottom: 16px; width: 78px; height: 27px;
+      display: flex; align-items: center; justify-content: space-around;
+      border: 1px solid #35313a; border-radius: 4px; background: #39343e;
+      box-shadow: inset 0 0 0 3px #17161922;
+    }
+    .tape-reel {
+      width: 18px; height: 18px; border: 4px dotted #e0d8c2; border-radius: 50%;
+      background: #706878; animation: spin 4s linear infinite;
+    }
+    .cassette-screw {
+      width: 5px; height: 5px; position: absolute; border-radius: 50%; background: #55505a;
+      box-shadow: inset 0 0 0 1px #f1eee7;
+    }
+    .screw-one { top: 8px; left: 8px; }
+    .screw-two { top: 8px; right: 8px; }
+    .screw-three { bottom: 7px; left: 8px; }
+    .screw-four { bottom: 7px; right: 8px; }
+    .cassette-marks { position: absolute; left: 16px; bottom: 17px; display: flex; gap: 5px; }
+    .cassette-marks i { width: 9px; height: 4px; border-radius: 1px; background: #39343e; }
+    .art-spark {
+      position: absolute; z-index: 3; color: var(--acid); font: 22px var(--sans);
+      text-shadow: 0 0 14px #d8ff3980; animation: sparkle 2.4s ease-in-out infinite;
+    }
+    .spark-one { top: 19px; right: 34%; }
+    .spark-two { bottom: 23px; left: 42%; color: #efaa98; animation-delay: -1s; }
+    .art-sticker {
+      position: absolute; z-index: 3; padding: 8px 10px; background: var(--acid); color: var(--ink);
+      box-shadow: 3px 4px 0 #171619; font: 9px var(--mono); letter-spacing: .08em;
+      transform: rotate(-6deg);
+    }
+    .art-sticker-top { top: 18px; left: 15px; }
+    .art-sticker-bottom { right: 12px; bottom: 12px; background: #efaa98; transform: rotate(5deg); }
+    .intro-foot {
+      display: flex; align-items: center; justify-content: space-between; gap: 14px;
+      color: var(--muted); font: 9px var(--mono); letter-spacing: .1em;
+    }
+    .sound-bars { height: 22px; display: flex; align-items: center; gap: 3px; }
+    .sound-bars i { width: 3px; height: var(--height); background: var(--acid); animation: equalize .65s ease-in-out infinite alternate; animation-delay: var(--delay); }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes cassette-float { 0%, 100% { translate: 0 0; } 50% { translate: 0 -7px; } }
+    @keyframes equalize { to { transform: scaleY(.4); opacity: .58; } }
+    @keyframes sparkle { 0%, 100% { opacity: .55; scale: .8; } 50% { opacity: 1; scale: 1.18; } }
+    .form-panel {
+      padding: clamp(22px, 3vw, 34px); border: 1px solid #ffffff1c; border-radius: 5px;
+      background: rgba(23, 22, 25, .82); box-shadow: 0 28px 80px #0005;
+      backdrop-filter: blur(14px);
+    }
+    .form-heading { display: flex; align-items: end; justify-content: space-between; gap: 14px; margin-bottom: 24px; }
+    .form-heading h2 { margin: 0; font-size: 22px; letter-spacing: -.04em; }
+    .form-heading span { color: var(--muted); font: 9px var(--mono); letter-spacing: .08em; white-space: nowrap; }
+    form {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
+      margin: 0;
+    }
+    label { display: grid; gap: 8px; color: #c2beb8; font: 10px var(--mono); letter-spacing: .09em; }
+    input, select {
+      width: 100%; min-height: 46px; padding: 0 12px; border: 1px solid #ffffff35;
+      border-radius: 2px; background: rgba(23, 22, 25, .72); color: var(--paper); font: 14px var(--sans);
+    }
+    input::placeholder { color: #77737a; }
+    select:invalid { color: #77737a; }
+    select option { background: var(--ink); color: var(--paper); }
+    input:focus-visible, select:focus-visible, button:focus-visible, a:focus-visible {
+      outline: 2px solid var(--acid); outline-offset: 3px;
+    }
+    .full-width { grid-column: 1 / -1; }
+    .form-back {
+      min-height: 46px; display: inline-flex; align-items: center; justify-content: center;
+      justify-self: start; padding: 0 18px; border: 1px solid #ffffff35; border-radius: 2px;
+      color: var(--paper); font: 700 11px var(--mono); letter-spacing: .08em;
+      transition: border-color .2s, color .2s;
+    }
+    .form-back:hover { border-color: var(--acid); color: var(--acid); }
+    .notice {
+      margin: 0; padding: 13px 15px; border-left: 3px solid var(--acid);
+      background: #d8ff390a; color: var(--muted); font-size: 12px; line-height: 1.6;
+    }
+    .notice[data-state="error"] { border-color: #efaa98; background: #efaa9810; }
+    .notice[data-state="success"] { border-color: var(--acid); }
+    button {
+      min-height: 46px; justify-self: start; padding: 0 20px; border: 0;
+      border-radius: 2px; background: var(--acid); color: var(--ink);
+      font: 700 11px var(--mono); letter-spacing: .08em; cursor: pointer;
+    }
+    button:disabled { background: #77737a; color: #d4d0c9; cursor: wait; }
+    footer { padding: 20px 0; border-top: 1px solid var(--line); color: var(--muted); font: 10px var(--mono); }
+    @media (max-width: 900px) {
+      .registration-layout { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 28px; }
+      .club-art { height: 220px; }
+      .form-heading { align-items: start; flex-direction: column; gap: 7px; }
+    }
+    @media (max-width: 560px) {
+      .page { width: min(100% - 32px, 460px); }
+      main { padding: 38px 0 48px; }
+      .registration-layout { grid-template-columns: 1fr; gap: 26px; }
+      .intro-panel { padding-bottom: 0; }
+      h1 { font-size: clamp(48px, 13vw, 66px); }
+      .club-art { height: 190px; margin: 20px 0 15px; }
+      .art-record { width: 112px; top: 19px; right: 8%; }
+      .art-record::before { width: 27px; height: 27px; border-width: 5px; }
+      .cassette-illustration { width: min(250px, 76%); height: 130px; top: 26px; left: 4%; padding: 9px 10px 8px; }
+      .cassette-label { height: 61px; }
+      .cassette-label strong { font-size: 14px; }
+      .cassette-window { right: 12px; bottom: 13px; width: 66px; height: 23px; }
+      .tape-reel { width: 15px; height: 15px; }
+      .cassette-marks { left: 12px; bottom: 14px; gap: 3px; }
+      .cassette-marks i { width: 7px; }
+      .club-art::before { width: 170px; height: 170px; }
+      .club-art::after { width: 210px; height: 210px; }
+      .art-sticker-top { top: 8px; left: 8px; }
+      .art-sticker-bottom { right: 8px; bottom: 7px; }
+      .form-panel { padding: 20px 16px; }
+      form { grid-template-columns: 1fr; padding: 18px; }
+      .full-width { grid-column: 1 / -1; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+      .art-record, .cassette-illustration, .tape-reel, .art-spark { animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="page">
+      <a class="brand" href="tcs.html">STUDENT<span>/</span>COLLECTIVE</a>
+    </div>
+  </header>
+  <main class="page">
+    <div class="registration-layout">
+      <section class="intro-panel" aria-labelledby="registration-title">
+        <div class="eyebrow">Club member registration</div>
+        <h1 id="registration-title">Find your<br><span>people.</span></h1>
+        <p class="intro">Good stories start with good people. Share a few details and find your place in The Student Collective.</p>
+        <div class="club-art" aria-hidden="true">
+          <span class="art-sticker art-sticker-top">SIDE A · SRU</span>
+          <div class="art-record"></div>
+          <div class="cassette-illustration">
+            <div class="cassette-topline"><span>TSC · STEREO</span><span>TYPE II / 90</span></div>
+            <div class="cassette-label">
+              <small>THE STUDENT COLLECTIVE</small>
+              <strong>YOUR STORY<br>STARTS HERE</strong>
+              <span>SRU · SIDE A</span>
+            </div>
+            <div class="cassette-window"><i class="tape-reel"></i><i class="tape-reel"></i></div>
+            <div class="cassette-marks"><i></i><i></i><i></i></div>
+            <i class="cassette-screw screw-one"></i><i class="cassette-screw screw-two"></i>
+            <i class="cassette-screw screw-three"></i><i class="cassette-screw screw-four"></i>
+          </div>
+          <span class="art-spark spark-one">✳</span>
+          <span class="art-spark spark-two">✳</span>
+          <span class="art-sticker art-sticker-bottom">YOUR VOICE BELONGS HERE</span>
+        </div>
+        <div class="intro-foot">
+          <span>STORIES · PEOPLE · CAMPUS</span>
+          <span class="sound-bars"><i style="--height:8px;--delay:-.1s"></i><i style="--height:16px;--delay:-.3s"></i><i style="--height:11px;--delay:-.5s"></i><i style="--height:20px;--delay:-.2s"></i><i style="--height:9px;--delay:-.4s"></i><i style="--height:15px;--delay:-.15s"></i></span>
+        </div>
+      </section>
+      <section class="form-panel" aria-labelledby="form-title">
+        <div class="form-heading">
+          <h2 id="form-title">Member details</h2>
+          <span>01 — YOUR PROFILE</span>
+        </div>
+        <form action="/api/member-registrations" method="post" aria-label="Club member registration">
+          <input type="hidden" name="csrf_token" id="csrf-token">
+          <label for="member-name">FULL NAME
+            <input id="member-name" name="name" type="text" autocomplete="name" placeholder="Your name" required>
+          </label>
+          <label for="member-email">EMAIL ADDRESS
+            <input id="member-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+          </label>
+          <label for="member-phone">PHONE NUMBER
+            <input id="member-phone" name="phone" type="tel" autocomplete="tel" placeholder="Your contact number" required>
+          </label>
+          <label for="member-year">YEAR OF STUDY
+            <select id="member-year" name="year" required>
+              <option value="" selected disabled>Select your year</option>
+              <option value="1">Year 1</option>
+              <option value="2">Year 2</option>
+              <option value="3">Year 3</option>
+              <option value="4">Year 4</option>
+              <option value="other">Other</option>
+            </select>
+          </label>
+          <label for="member-batch">BATCH
+            <input id="member-batch" name="batch" type="text" placeholder="Your batch" required>
+          </label>
+          <label for="member-department">DEPARTMENT
+            <input id="member-department" name="department" type="text" placeholder="Your department" required>
+          </label>
+          <p class="notice full-width" id="registration-status" role="status" aria-live="polite">Connecting to the Student Collective registration service…</p>
+          <button class="full-width" id="submit-registration" type="submit" disabled>CONNECTING…</button>
+          <a class="form-back full-width" href="tcs.html">← BACK TO TSC</a>
+        </form>
+      </section>
+    </div>
+  </main>
+  <footer>
+    <div class="page">THE STUDENT COLLECTIVE · MADE FOR SRU STUDENTS</div>
+  </footer>
+  <script>
+    const registrationForm = document.querySelector("form");
+    const csrfInput = document.getElementById("csrf-token");
+    const registrationStatus = document.getElementById("registration-status");
+    const submitRegistration = document.getElementById("submit-registration");
+    let csrfToken = "";
+
+    function setRegistrationStatus(message, state = "") {
+      registrationStatus.textContent = message;
+      registrationStatus.dataset.state = state;
+    }
+
+    fetch("/api/csrf-token")
+      .then(async response => {
+        if (!response.ok) throw new Error("The registration service is unavailable.");
+        return response.json();
+      })
+      .then(({ csrf_token: token }) => {
+        if (!token) throw new Error("The registration security token could not be loaded.");
+        csrfToken = token;
+        csrfInput.value = token;
+        submitRegistration.disabled = false;
+        submitRegistration.textContent = "SUBMIT REGISTRATION";
+        setRegistrationStatus("Your details will be saved to the Student Collective database and visible to authorized admins.");
+      })
+      .catch(error => setRegistrationStatus(`${error.message} Refresh this page and try again.`, "error"));
+
+    registrationForm.addEventListener("submit", async event => {
+      event.preventDefault();
+      if (!registrationForm.reportValidity() || !csrfInput.value) return;
+      submitRegistration.disabled = true;
+      submitRegistration.textContent = "SENDING…";
+      setRegistrationStatus("Submitting your registration…");
+      try {
+        const response = await fetch(registrationForm.action, {
+          method: "POST",
+          body: new FormData(registrationForm),
+          headers: { Accept: "application/json" }
+        });
+        const result = await response.json();
+        if (!response.ok) throw new Error(result.error || "Your registration could not be saved.");
+        registrationForm.reset();
+        csrfInput.value = csrfToken;
+        setRegistrationStatus(result.message, "success");
+      } catch (error) {
+        setRegistrationStatus(`${error.message} Your information was not saved; please try again.`, "error");
+      } finally {
+        submitRegistration.disabled = false;
+        submitRegistration.textContent = "SUBMIT REGISTRATION";
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,3192 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#171619">
+  <meta name="description"
+    content="The Student Collective is an SRU student podcast for honest talks about academic pressure, inspiring journeys, stand-up comedy, and campus life.">
+  <title>The Student Collective — SRU stories, real talk &amp; laughs</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+    :root {
+      color-scheme: dark;
+      --ink: #171619;
+      --paper: #f1eee7;
+      --muted: #aaa6a0;
+      --acid: #d8ff39;
+      --purple: #9c7bff;
+      --line: rgba(241, 238, 231, .16);
+      --mono: "DM Mono", monospace;
+      --sans: "Space Grotesk", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--ink);
+      color: var(--paper);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .wrap {
+      width: min(1220px, calc(100% - 64px));
+      margin: 0 auto;
+    }
+
+    .mono {
+      font: 11px var(--mono);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .topline {
+      color: var(--acid);
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .topline::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--acid);
+      box-shadow: 0 0 13px var(--acid);
+    }
+
+    header {
+      height: 82px;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+      position: relative;
+      z-index: 5;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -.08em;
+    }
+
+    .brand span {
+      color: var(--acid);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      color: #c2beb8;
+      font-size: 13px;
+    }
+
+    .nav-links a {
+      transition: color .2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--acid);
+    }
+
+    .nav-cta,
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 11px;
+      background: var(--acid);
+      color: var(--ink);
+      font-weight: 700;
+      padding: 13px 18px;
+      border-radius: 3px;
+      font-size: 12px;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .nav-cta:hover,
+    .button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 9px 30px #d8ff3944;
+    }
+
+    .hero {
+      min-height: 700px;
+      padding: 92px 0 76px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 700px;
+      height: 700px;
+      border-radius: 50%;
+      top: -200px;
+      right: -250px;
+      pointer-events: none;
+      background: radial-gradient(circle, #7044d42b 0, #7044d400 68%);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      left: -230px;
+      bottom: -280px;
+      border: 1px solid #d8ff3918;
+      border-radius: 50%;
+      pointer-events: none;
+      box-shadow: 0 0 0 28px #d8ff3908, 0 0 0 57px #d8ff3906;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 65px;
+      align-items: center;
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 {
+      font-size: clamp(58px, 8vw, 98px);
+      line-height: .84;
+      letter-spacing: -.09em;
+      margin: 30px 0 28px;
+      font-weight: 700;
+    }
+
+    h1 span {
+      color: var(--acid);
+      display: block;
+    }
+
+    .intro {
+      max-width: 420px;
+      color: #b5b1ab;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      margin-top: 34px;
+    }
+
+    .text-link {
+      color: var(--paper);
+      font-size: 12px;
+      border-bottom: 1px solid #777;
+      padding-bottom: 5px;
+    }
+
+    .text-link:hover {
+      color: var(--acid);
+      border-color: var(--acid);
+    }
+
+    .cover-wrap {
+      min-height: 470px;
+      position: relative;
+      display: grid;
+      place-items: center;
+    }
+
+    .orbit {
+      width: min(410px, 88vw);
+      aspect-ratio: 1;
+      border: 1px solid #ffffff25;
+      border-radius: 50%;
+      position: absolute;
+      animation: orbit 30s linear infinite;
+    }
+
+    .orbit::before,
+    .orbit::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      background: var(--acid);
+    }
+
+    .orbit::before {
+      width: 9px;
+      height: 9px;
+      top: 12%;
+      left: 18%;
+      box-shadow: 0 0 20px var(--acid);
+    }
+
+    .orbit::after {
+      width: 5px;
+      height: 5px;
+      bottom: 11%;
+      right: 15%;
+      background: var(--purple);
+      box-shadow: 0 0 16px var(--purple);
+    }
+
+    .player-scene {
+      width: min(470px, 100%);
+      height: 390px;
+      position: relative;
+      display: grid;
+      place-items: center;
+      isolation: isolate;
+      animation: hover 6s ease-in-out infinite;
+    }
+
+    .player-glow {
+      position: absolute;
+      inset: 14% 9%;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, #9c7bff28, transparent 68%);
+      filter: blur(9px);
+    }
+
+    .player-disc {
+      width: min(275px, 64vw);
+      aspect-ratio: 1;
+      position: absolute;
+      z-index: 1;
+      top: -48px;
+      left: 55%;
+      border: 1px solid #ffffff80;
+      border-radius: 50%;
+      transform: translateX(-50%);
+      background:
+        radial-gradient(circle, #171619 0 5%, #d8ff39 5.3% 9%, #25242a 9.3% 11%, transparent 11.3%),
+        repeating-radial-gradient(circle, #ffffff14 0 1px, transparent 1.5px 5px),
+        conic-gradient(from 15deg, #62576e, #d5cae1, #7164a0, #ece1da, #66767d, #d4d0c7, #7c6388, #e9d9c4, #62576e);
+      box-shadow: 0 12px 38px #0008, inset 0 0 0 10px #17161933, inset 0 0 0 12px #ffffff47;
+      animation: disc-spin 8s linear infinite paused;
+    }
+
+    .player-disc::before,
+    .player-disc::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .player-disc::before {
+      inset: 22%;
+      border: 1px solid #17161945;
+      background: repeating-radial-gradient(circle, transparent 0 5px, #17161936 5.5px 6px);
+    }
+
+    .player-disc::after {
+      width: 10px;
+      height: 10px;
+      left: 50%;
+      top: 50%;
+      border: 2px solid #f1eee7;
+      background: var(--ink);
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 0 5px #17161934;
+    }
+
+    .disc-label {
+      position: absolute;
+      z-index: 1;
+      inset: 43%;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--acid);
+      color: var(--ink);
+      font: 700 clamp(6px, 1.3vw, 9px) var(--mono);
+      letter-spacing: .02em;
+      text-align: center;
+      transform: rotate(-30deg);
+    }
+
+    .player-deck {
+      width: min(390px, 92%);
+      height: 215px;
+      position: absolute;
+      z-index: 2;
+      left: 50%;
+      bottom: 17px;
+      transform: translateX(-50%);
+      border: 1px solid #ffffff3b;
+      border-radius: 15px 15px 24px 24px;
+      background: linear-gradient(145deg, #423556 0%, #27242e 43%, #171619 100%);
+      box-shadow: 0 26px 45px #0008, inset 0 1px 1px #ffffff43, inset 0 -5px 9px #0006;
+    }
+
+    .deck-display {
+      position: absolute;
+      top: 17px;
+      left: 20px;
+      width: 105px;
+      padding: 9px 10px;
+      border: 1px solid #d8ff3940;
+      border-radius: 3px;
+      background: #101711;
+      box-shadow: inset 0 0 15px #d8ff3912;
+    }
+
+    .display-label {
+      display: block;
+      color: #939c84;
+      font: 7px var(--mono);
+      letter-spacing: .1em;
+    }
+
+    .display-time {
+      display: block;
+      margin-top: 3px;
+      color: var(--acid);
+      font: 16px var(--mono);
+      letter-spacing: .05em;
+    }
+
+    .deck-brand {
+      position: absolute;
+      top: 23px;
+      right: 22px;
+      color: var(--paper);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: -.07em;
+    }
+
+    .deck-brand span {
+      color: var(--acid);
+    }
+
+    .player-controls {
+      position: absolute;
+      right: 19px;
+      bottom: 18px;
+      left: 19px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .player-button {
+      min-width: 112px;
+      min-height: 38px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: 1px solid #d8ff396f;
+      border-radius: 4px;
+      background: #d8ff3911;
+      color: var(--acid);
+      cursor: pointer;
+      font: 10px var(--mono);
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      transition: background .2s ease, color .2s ease, transform .2s ease;
+    }
+
+    .player-button:hover {
+      transform: translateY(-2px);
+      background: var(--acid);
+      color: var(--ink);
+    }
+
+    .player-button:focus-visible {
+      outline: 2px solid var(--paper);
+      outline-offset: 3px;
+    }
+
+    .player-button-icon {
+      font-size: 13px;
+    }
+
+    .deck-eq {
+      height: 27px;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+
+    .deck-eq i {
+      width: 3px;
+      height: 5px;
+      border-radius: 3px;
+      background: var(--purple);
+    }
+
+    .player-scene.is-playing .deck-eq i {
+      animation: equalize .55s ease-in-out infinite alternate;
+      animation-delay: calc(var(--bar) * -70ms);
+    }
+
+    .deck-eq i:nth-child(1) {
+      --bar: 1;
+    }
+
+    .deck-eq i:nth-child(2) {
+      --bar: 3;
+    }
+
+    .deck-eq i:nth-child(3) {
+      --bar: 2;
+    }
+
+    .deck-eq i:nth-child(4) {
+      --bar: 4;
+    }
+
+    .deck-eq i:nth-child(5) {
+      --bar: 1.5;
+    }
+
+    .deck-eq i:nth-child(6) {
+      --bar: 3.5;
+    }
+
+    .deck-eq i:nth-child(7) {
+      --bar: 2.5;
+    }
+
+    .deck-eq i:nth-child(8) {
+      --bar: 4.5;
+    }
+
+    .deck-eq i:nth-child(9) {
+      --bar: 2;
+    }
+
+    .scene-note {
+      color: #aaa6a0;
+      font: 8px var(--mono);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .player-scene.is-playing .player-disc {
+      animation-play-state: running;
+    }
+
+    .float-tag {
+      position: absolute;
+      z-index: 3;
+      padding: 12px 14px;
+      color: var(--ink);
+      background: var(--paper);
+      font: 10px var(--mono);
+      text-transform: uppercase;
+      box-shadow: 0 10px 35px #0005;
+    }
+
+    .tag-a {
+      left: -4px;
+      top: 77px;
+      transform: rotate(-8deg);
+      animation: drift 4s ease-in-out infinite;
+    }
+
+    .tag-b {
+      right: -3px;
+      bottom: 49px;
+      background: var(--acid);
+      transform: rotate(5deg);
+      animation: drift 4s ease-in-out -2s infinite;
+    }
+
+    .hero-index {
+      position: absolute;
+      bottom: 31px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #77737a;
+    }
+
+    .ticker {
+      overflow: hidden;
+      background: var(--acid);
+      color: var(--ink);
+      padding: 14px 0;
+      transform: rotate(-1deg) scale(1.02);
+    }
+
+    .ticker-track {
+      display: flex;
+      width: max-content;
+      animation: ticker 25s linear infinite;
+    }
+
+    .ticker-item {
+      white-space: nowrap;
+      padding: 0 24px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+
+    .ticker-item span {
+      padding-left: 45px;
+    }
+
+    .section {
+      padding: 120px 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      margin-bottom: 45px;
+    }
+
+    .eyebrow {
+      color: var(--purple);
+      margin-bottom: 15px;
+    }
+
+    h2 {
+      font-size: clamp(43px, 6vw, 74px);
+      letter-spacing: -.085em;
+      line-height: .9;
+      margin: 0;
+    }
+
+    .section-aside {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+      max-width: 220px;
+    }
+
+    .episode-feature {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 27px 0;
+      display: grid;
+      grid-template-columns: 62px 1fr auto;
+      gap: 25px;
+      align-items: center;
+    }
+
+    .ep-number {
+      color: #716d72;
+      font: 12px var(--mono);
+    }
+
+    .ep-title {
+      font-size: clamp(22px, 3vw, 34px);
+      letter-spacing: -.05em;
+      margin: 0 0 8px;
+    }
+
+    .ep-meta {
+      color: var(--muted);
+      font: 10px var(--mono);
+      text-transform: uppercase;
+      letter-spacing: .1em;
+    }
+
+    .play-button {
+      width: 54px;
+      height: 54px;
+      border: 1px solid #666168;
+      border-radius: 50%;
+      background: transparent;
+      color: var(--acid);
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      transition: all .2s ease;
+    }
+
+    .play-button:hover,
+    .play-button[aria-pressed="true"] {
+      background: var(--acid);
+      color: var(--ink);
+      border-color: var(--acid);
+      transform: scale(1.07);
+    }
+
+    .play-button svg {
+      width: 15px;
+      height: 15px;
+      fill: currentColor;
+    }
+
+    .waveform {
+      display: flex;
+      height: 34px;
+      gap: 3px;
+      align-items: center;
+      opacity: .82;
+      margin-top: 17px;
+    }
+
+    .waveform i {
+      display: block;
+      width: 3px;
+      border-radius: 3px;
+      height: var(--h);
+      background: linear-gradient(var(--purple), var(--acid));
+      transform-origin: center;
+      animation: sound 1s ease-in-out infinite alternate;
+      animation-delay: var(--d);
+    }
+
+    .waveform:not(.playing) i {
+      animation-play-state: paused;
+    }
+
+    .episodes-grid {
+      margin-top: 22px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .episode-card {
+      padding: 0 23px 23px;
+      background: #201f22;
+      min-height: 245px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: background .25s, transform .25s;
+      overflow: hidden;
+    }
+
+    .episode-card:hover {
+      background: #29272c;
+      transform: translateY(-5px);
+    }
+
+    .episode-art {
+      height: 104px;
+      position: relative;
+      display: grid;
+      place-items: center;
+      margin: 0 -23px 19px;
+      overflow: hidden;
+    }
+
+    .episode-art::before,
+    .episode-art::after {
+      content: "";
+      position: absolute;
+    }
+
+    .episode-art::before {
+      width: 116px;
+      height: 116px;
+      border: 1px solid #ffffff58;
+      box-shadow: 0 0 0 8px #ffffff10, 0 0 0 18px #ffffff08;
+      animation: art-pulse 4s ease-in-out infinite;
+    }
+
+    .episode-art::after {
+      width: 8px;
+      height: 8px;
+      background: var(--paper);
+      box-shadow: 0 0 18px currentColor;
+    }
+
+    .episode-art span {
+      z-index: 1;
+      font-size: 23px;
+      font-weight: 700;
+      letter-spacing: -.09em;
+      animation: text-float 4s ease-in-out infinite;
+    }
+
+    .episode-card:nth-child(1) .episode-art {
+      background: radial-gradient(circle at 65% 25%, #d8ff3970, transparent 30%), linear-gradient(130deg, #5a2d67, #241d35 75%);
+      color: var(--acid);
+    }
+
+    .episode-card:nth-child(2) .episode-art {
+      background: radial-gradient(circle at 32% 40%, #eeaa6680, transparent 29%), linear-gradient(130deg, #473642, #252027 75%);
+      color: #f2b278;
+    }
+
+    .episode-card:nth-child(3) .episode-art {
+      background: radial-gradient(circle at 62% 32%, #9c7bff80, transparent 30%), linear-gradient(130deg, #343564, #211f2b 75%);
+      color: #b9a3ff;
+    }
+
+    .episode-card:nth-child(2) .episode-art::before,
+    .episode-card:nth-child(2) .episode-art span {
+      animation-delay: -.9s;
+    }
+
+    .episode-card:nth-child(3) .episode-art::before,
+    .episode-card:nth-child(3) .episode-art span {
+      animation-delay: -1.8s;
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      color: #8f8a92;
+      font: 10px var(--mono);
+    }
+
+    .episode-card h3 {
+      font-size: 20px;
+      letter-spacing: -.05em;
+      line-height: 1.1;
+      margin: 25px 0 12px;
+    }
+
+    .episode-card p {
+      color: #a8a3aa;
+      font-size: 12px;
+      margin: 0;
+    }
+
+    .card-arrow {
+      color: var(--acid);
+      font-size: 18px;
+    }
+
+    .manifesto {
+      position: relative;
+      isolation: isolate;
+      padding: 58px 0 34px;
+      overflow: hidden;
+      clip-path: polygon(0 16px, 100% 0, 100% calc(100% - 16px), 0 100%);
+      background:
+        radial-gradient(ellipse at 0% 100%, #edb8a00c, transparent 44%),
+        radial-gradient(ellipse at 100% 0%, #a8cbc50d, transparent 42%),
+        #fff;
+      color: #262b2c;
+    }
+
+    .manifesto-inner::before {
+      content: "";
+      position: absolute;
+      top: -58px;
+      right: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #39746e 0 33%, #e8bc67 33% 66%, #e98e7f 66%);
+      opacity: .8;
+      transform: rotate(-1deg) scaleX(1.03);
+      transform-origin: center;
+    }
+
+    .manifesto::before,
+    .manifesto::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      border: 1px solid #364c4c0d;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .manifesto::before {
+      width: 580px;
+      height: 580px;
+      top: -365px;
+      right: -75px;
+      box-shadow: 0 0 0 30px #364c4c07, 0 0 0 65px #364c4c05;
+      animation: about-orbit 48s linear infinite;
+    }
+
+    .manifesto::after {
+      width: 300px;
+      height: 300px;
+      bottom: -220px;
+      left: 33%;
+      border-color: #d4776219;
+      box-shadow: 0 0 0 22px #d4776208, 0 0 0 48px #d4776205;
+    }
+
+    .manifesto-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .manifesto .eyebrow {
+      color: #39746e;
+    }
+
+    .manifesto h2 {
+      max-width: 560px;
+    }
+
+    .manifesto h2 em {
+      color: #39746e;
+      font-style: normal;
+    }
+
+    .manifesto-copy {
+      max-width: 470px;
+      padding: 20px;
+      border: 1px solid #37484618;
+      border-radius: 7px;
+      background: #fff;
+      box-shadow: 0 18px 48px #273a3210;
+      color: #545b57;
+      font-size: 16px;
+      line-height: 1.75;
+      backdrop-filter: blur(8px);
+    }
+
+    .manifesto-copy .mono {
+      display: block;
+      color: #39746e;
+      margin-bottom: 12px;
+    }
+
+    .manifesto-copy p {
+      margin: 0 0 12px;
+    }
+
+    .manifesto-copy .manifesto-lead {
+      margin-bottom: 10px;
+      color: #292b2c;
+      font-size: clamp(23px, 2.8vw, 32px);
+      font-weight: 700;
+      letter-spacing: -.065em;
+      line-height: 1.08;
+    }
+
+    .manifesto-lead em {
+      color: #bd5b4b;
+      font-style: normal;
+    }
+
+    .manifesto-copy .manifesto-signature {
+      margin: 8px 4px -5px 0;
+      color: #111;
+      font: 400 clamp(38px, 4vw, 50px)/.85 "Caveat", cursive;
+      letter-spacing: -.04em;
+      text-align: right;
+      transform: rotate(-5deg);
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .manifesto-copy .text-link {
+      color: #b85e50 !important;
+      border-color: #b85e5080 !important;
+    }
+
+    .studio {
+      padding: 30px 0 42px;
+      background: #1d1b1f;
+      overflow: hidden;
+    }
+
+    .studio .section-head {
+      margin-bottom: 30px;
+    }
+
+    .gallery-open-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 16px;
+      padding: 12px 15px;
+      border: 1px solid #ffffff3b;
+      background: #ffffff08;
+      color: var(--paper);
+      font: 10px var(--mono);
+      letter-spacing: .08em;
+      cursor: pointer;
+      transition: border-color .2s, color .2s, background .2s;
+    }
+
+    .gallery-open-button:hover {
+      border-color: var(--acid);
+      background: #d8ff3910;
+      color: var(--acid);
+    }
+
+    .gallery-open-button:focus-visible,
+    .gallery-view-close:focus-visible {
+      outline: 2px solid var(--acid);
+      outline-offset: 4px;
+    }
+
+    .studio-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .9fr .9fr;
+      grid-template-rows: repeat(2, minmax(200px, 22vw));
+      grid-template-areas: "one two three" "one four four";
+      gap: 13px;
+    }
+
+    #gallery .studio-grid { display: none; }
+
+    .studio-photo {
+      min-width: 0;
+      position: relative;
+      overflow: hidden;
+      margin: 0;
+      background: #29272c;
+    }
+
+    .studio-photo:nth-child(1) {
+      grid-area: one;
+    }
+
+    .studio-photo:nth-child(2) {
+      grid-area: two;
+    }
+
+    .studio-photo:nth-child(3) {
+      grid-area: three;
+    }
+
+    .studio-photo:nth-child(4) {
+      grid-area: four;
+    }
+
+    .studio-photo-user {
+      grid-area: auto;
+      grid-column: span 1;
+      min-height: 220px;
+    }
+
+    .gallery-viewer {
+      width: 100vw;
+      height: 100vh;
+      height: 100dvh;
+      max-width: none;
+      max-height: none;
+      position: fixed;
+      inset: 0;
+      margin: 0;
+      padding: 0;
+      overflow: auto;
+      border: 0;
+      background:
+        radial-gradient(ellipse at 88% 0%, #9c7bff1c, transparent 33%),
+        #171619;
+      color: var(--paper);
+    }
+
+    .gallery-viewer::backdrop {
+      background: #09080bed;
+      backdrop-filter: blur(8px);
+    }
+
+    .gallery-viewer-inner {
+      width: min(1440px, calc(100% - 48px));
+      min-height: 100%;
+      margin: 0 auto;
+      padding: clamp(22px, 4vw, 52px) 0;
+    }
+
+    .gallery-viewer-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 28px;
+      padding-bottom: 19px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .gallery-viewer-kicker {
+      margin: 0 0 9px;
+      color: var(--acid);
+      font: 10px var(--mono);
+      letter-spacing: .13em;
+    }
+
+    .gallery-viewer-header h2 {
+      margin: 0;
+      font-size: clamp(30px, 5vw, 52px);
+      line-height: 1;
+      letter-spacing: -.06em;
+    }
+
+    .gallery-viewer-header p:last-child {
+      margin: 9px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .gallery-view-close {
+      min-width: 44px;
+      min-height: 44px;
+      display: inline-grid;
+      flex: 0 0 auto;
+      place-items: center;
+      border: 1px solid #ffffff35;
+      background: #ffffff08;
+      color: var(--paper);
+      font-size: 23px;
+      cursor: pointer;
+      transition: border-color .2s, color .2s, transform .2s;
+    }
+
+    .gallery-view-close:hover {
+      border-color: var(--acid);
+      color: var(--acid);
+      transform: rotate(90deg);
+    }
+
+    .gallery-view-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-auto-rows: minmax(220px, 27vw);
+      gap: 14px;
+    }
+
+    .gallery-folder-nav {
+      display: flex;
+      gap: 9px;
+      margin: 0 0 20px;
+      overflow-x: auto;
+      padding: 2px 2px 7px;
+    }
+
+    .gallery-folder-button {
+      min-height: 40px;
+      flex: 0 0 auto;
+      padding: 0 13px;
+      border: 1px solid #ffffff2b;
+      background: #ffffff08;
+      color: var(--muted);
+      cursor: pointer;
+      font: 9px var(--mono);
+      letter-spacing: .06em;
+      transition: border-color .2s, color .2s, background .2s;
+    }
+
+    .gallery-folder-button:hover,
+    .gallery-folder-button[aria-pressed="true"] {
+      border-color: var(--acid);
+      background: #d8ff3910;
+      color: var(--acid);
+    }
+
+    .gallery-folder-button span {
+      margin-left: 7px;
+      color: #817d86;
+    }
+
+    .gallery-view-grid .studio-photo,
+    .gallery-view-grid .studio-photo:nth-child(1),
+    .gallery-view-grid .studio-photo:nth-child(2),
+    .gallery-view-grid .studio-photo:nth-child(3),
+    .gallery-view-grid .studio-photo:nth-child(4) {
+      min-height: 0;
+      grid-area: auto;
+      grid-column: span 1;
+      opacity: 1;
+      transform: none;
+    }
+
+    .gallery-view-grid .studio-photo:first-child {
+      grid-row: span 2;
+    }
+
+    .gallery-view-grid .studio-photo-user {
+      min-height: 0;
+    }
+
+    .gallery-view-empty {
+      grid-column: 1 / -1;
+      min-height: 38vh;
+      display: grid;
+      place-content: center;
+      gap: 10px;
+      border: 1px dashed #ffffff2a;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .gallery-view-empty strong {
+      color: var(--paper);
+      font-size: 21px;
+    }
+
+    @media (max-width: 760px) {
+      .gallery-view-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-auto-rows: minmax(200px, 38vw);
+      }
+
+      .gallery-view-grid .studio-photo:first-child {
+        grid-row: auto;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .gallery-viewer-inner {
+        width: calc(100% - 30px);
+        padding: 20px 0 28px;
+      }
+
+      .gallery-viewer-header {
+        gap: 12px;
+        margin-bottom: 18px;
+      }
+
+      .gallery-viewer-header p:last-child {
+        max-width: 250px;
+        line-height: 1.5;
+      }
+
+      .gallery-view-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: minmax(230px, 70vw);
+        gap: 10px;
+      }
+    }
+
+    .studio-live-ribbon {
+      position: absolute;
+      z-index: 2;
+      top: 56px;
+      right: -37px;
+      width: 148px;
+      padding: 8px 0;
+      transform: rotate(45deg);
+      background: var(--acid);
+      box-shadow: 0 3px 12px #0007;
+      color: var(--ink);
+      font: 700 9px var(--mono);
+      letter-spacing: .12em;
+      text-align: center;
+    }
+
+    .studio-photo img,
+    .studio-photo video {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      filter: saturate(.8);
+      transition: transform .7s cubic-bezier(.2, .7, .2, 1), filter .4s ease;
+    }
+
+    .studio-photo:hover img,
+    .studio-photo:hover video {
+      transform: scale(1.055);
+      filter: saturate(1.12);
+    }
+
+    .studio-photo::after {
+      position: absolute;
+      inset: 30% 0 0;
+      pointer-events: none;
+      background: linear-gradient(transparent, rgba(15, 14, 17, .8));
+      content: "";
+    }
+
+    .studio-caption {
+      position: absolute;
+      z-index: 1;
+      right: 17px;
+      bottom: 16px;
+      left: 17px;
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 8px;
+      color: var(--paper);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .studio-caption span {
+      color: var(--acid);
+      font: 9px var(--mono);
+      white-space: nowrap;
+    }
+
+    .graphic {
+      width: min(340px, 100%);
+      margin: 16px auto 0;
+      position: relative;
+      isolation: isolate;
+      border: 1px solid #d6e5df;
+      border-radius: 10px;
+      background:
+        radial-gradient(circle at 50% 48%, #547a6c24 0 1px, transparent 1.5px) 0 0 / 22px 22px,
+        linear-gradient(145deg, #eff7f3, #e3f0ea 58%, #f9eee7);
+      box-shadow: 11px 13px 0 #d27b6740, 0 26px 56px #263c3219;
+      animation: about-float 6s ease-in-out infinite;
+    }
+
+    .about-doodle {
+      width: 100%;
+      height: auto;
+      display: block;
+      overflow: visible;
+    }
+
+    .doodle-spark {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: sparkle 2.8s ease-in-out infinite;
+    }
+
+    .doodle-spark:nth-of-type(2) {
+      animation-delay: -.9s;
+    }
+
+    .doodle-spark:nth-of-type(3) {
+      animation-delay: -1.7s;
+    }
+
+    .graphic-tag {
+      position: absolute;
+      z-index: 2;
+      padding: 9px 12px;
+      border: 2px solid #315a58;
+      background: #39746e;
+      color: #fff;
+      box-shadow: 4px 4px 0 #315a58;
+      font: 700 9px var(--mono);
+      letter-spacing: .1em;
+      white-space: nowrap;
+    }
+
+    .graphic-tag-one {
+      top: -15px;
+      left: 15px;
+      transform: rotate(-5deg);
+      animation: tag-bob 4s ease-in-out infinite;
+    }
+
+    .graphic-tag-two {
+      right: -13px;
+      bottom: 28px;
+      border-color: #a54e45;
+      background: #efaa98;
+      box-shadow: 4px 4px 0 #a54e45;
+      color: #302522;
+      transform: rotate(4deg);
+      animation: tag-bob 4s ease-in-out -2s infinite;
+    }
+
+    .about-signal {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin: 12px 2px 0;
+      color: #5d6661;
+      font: 9px var(--mono);
+      letter-spacing: .09em;
+    }
+
+    .about-signal-bars {
+      height: 22px;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      color: #39746e;
+    }
+
+    .about-signal-bars i {
+      display: block;
+      width: 3px;
+      height: var(--bar-height);
+      border-radius: 3px;
+      background: currentColor;
+      transform-origin: center;
+      animation: signal-bounce .8s ease-in-out infinite alternate;
+      animation-delay: var(--bar-delay);
+    }
+
+    .about-signal-bars i:nth-child(1) {
+      --bar-height: 7px;
+      --bar-delay: -.2s;
+    }
+
+    .about-signal-bars i:nth-child(2) {
+      --bar-height: 15px;
+      --bar-delay: -.6s;
+    }
+
+    .about-signal-bars i:nth-child(3) {
+      --bar-height: 10px;
+      --bar-delay: -.1s;
+    }
+
+    .about-signal-bars i:nth-child(4) {
+      --bar-height: 20px;
+      --bar-delay: -.7s;
+    }
+
+    .about-signal-bars i:nth-child(5) {
+      --bar-height: 12px;
+      --bar-delay: -.3s;
+    }
+
+    .about-signal-bars i:nth-child(6) {
+      --bar-height: 17px;
+      --bar-delay: -.5s;
+    }
+
+    .about-signal-bars i:nth-child(7) {
+      --bar-height: 8px;
+      --bar-delay: -.15s;
+    }
+
+    .cassette-reel {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: reel-spin 3.8s linear infinite;
+    }
+
+    .cassette-reel+.cassette-reel {
+      animation-direction: reverse;
+    }
+
+    .pencil-doodle {
+      transform-box: fill-box;
+      transform-origin: 50% 85%;
+      animation: pencil-sway 4s ease-in-out infinite;
+    }
+
+    .subscribe {
+      padding: 52px 0 76px;
+      text-align: left;
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+      background: radial-gradient(ellipse at 78% 50%, #df3c2917, transparent 35%);
+    }
+
+    .subscribe::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      width: 610px;
+      aspect-ratio: 1;
+      right: 4%;
+      top: 50%;
+      border: 1px solid #ffffff0a;
+      border-radius: 50%;
+      box-shadow: 0 0 0 38px #ffffff04, 0 0 0 84px #ffffff03, 0 0 0 140px #ffffff02;
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+
+    .subscribe>.wrap {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(320px, .9fr);
+      grid-template-areas: "copy visual" "perks visual";
+      align-items: center;
+      column-gap: 52px;
+    }
+
+    .listen-copy {
+      grid-area: copy;
+    }
+
+    .listen-copy .topline {
+      justify-content: flex-start !important;
+    }
+
+    .listen-visual {
+      width: min(100%, 410px);
+      height: 300px;
+      grid-area: visual;
+      position: relative;
+      margin: 0 auto;
+      display: grid;
+      place-items: center;
+      isolation: isolate;
+    }
+
+    .listen-visual::before {
+      content: "";
+      position: absolute;
+      inset: 20px 26px;
+      z-index: -1;
+      border: 1px solid #d8ff3938;
+      border-radius: 50%;
+      animation: listen-ring 4s ease-in-out infinite;
+    }
+
+    .listen-cassette {
+      width: 190px;
+      height: 310px;
+      position: relative;
+      z-index: 1;
+      border: 2px solid #f5ce39;
+      border-radius: 12px;
+      object-fit: contain;
+      box-shadow: 0 18px 38px #0009, 0 0 30px #ff302544;
+      transform: rotate(-90deg);
+      animation: cassette-float 5s ease-in-out infinite;
+    }
+
+    .listen-visual::after {
+      content: "TSC  /  SIDE A";
+      position: absolute;
+      z-index: 2;
+      right: 1px;
+      bottom: 40px;
+      padding: 7px 9px;
+      background: var(--acid);
+      color: var(--ink);
+      box-shadow: 3px 3px 0 #171619;
+      font: 700 9px var(--mono);
+      letter-spacing: .08em;
+      transform: rotate(4deg);
+    }
+
+    .listen-eq {
+      position: absolute;
+      z-index: 3;
+      bottom: 17px;
+      left: 50%;
+      display: flex;
+      height: 20px;
+      align-items: center;
+      gap: 4px;
+      transform: translateX(-50%);
+    }
+
+    .listen-eq i {
+      width: 3px;
+      height: var(--bar);
+      border-radius: 4px;
+      background: var(--acid);
+      box-shadow: 0 0 10px #d8ff3966;
+      transform-origin: center;
+      animation: signal-bounce .7s ease-in-out infinite alternate;
+      animation-delay: var(--delay);
+    }
+
+    .listen-eq i:nth-child(1) {
+      --bar: 8px;
+      --delay: -.2s;
+    }
+
+    .listen-eq i:nth-child(2) {
+      --bar: 15px;
+      --delay: -.5s;
+    }
+
+    .listen-eq i:nth-child(3) {
+      --bar: 11px;
+      --delay: -.1s;
+    }
+
+    .listen-eq i:nth-child(4) {
+      --bar: 19px;
+      --delay: -.6s;
+    }
+
+    .listen-eq i:nth-child(5) {
+      --bar: 13px;
+      --delay: -.3s;
+    }
+
+    .listen-eq i:nth-child(6) {
+      --bar: 17px;
+      --delay: -.7s;
+    }
+
+    .listen-eq i:nth-child(7) {
+      --bar: 9px;
+      --delay: -.15s;
+    }
+
+    .subscribe h2 {
+      max-width: 700px;
+      margin: 20px 0 24px;
+    }
+
+    .subscribe p {
+      max-width: 500px;
+      color: var(--muted);
+      margin: 0 0 28px;
+      line-height: 1.7;
+    }
+
+    .platforms {
+      display: flex;
+      justify-content: flex-start;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .platforms a {
+      border: 1px solid #ffffff35;
+      border-radius: 2px;
+      padding: 12px 17px;
+      font-size: 11px;
+      transition: color .2s, border-color .2s, background .2s, transform .2s;
+    }
+
+    .platforms a:hover {
+      color: var(--acid);
+      border-color: var(--acid);
+      background: #d8ff3910;
+      transform: translateY(-3px);
+    }
+
+    .platforms a:focus-visible {
+      outline: 2px solid var(--acid);
+      outline-offset: 4px;
+    }
+
+    .listen-perks {
+      grid-area: perks;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px 20px;
+      margin-top: 28px;
+      color: #aaa6a0;
+      font: 10px var(--mono);
+      letter-spacing: .07em;
+      text-transform: uppercase;
+    }
+
+    .listen-perks span {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .listen-perks span::before {
+      content: "✳";
+      color: var(--acid);
+      font-size: 12px;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 26px 0;
+      color: #77737a;
+      font: 10px var(--mono);
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-links a:hover {
+      color: var(--acid);
+    }
+
+    .warning-ribbon {
+      overflow: hidden;
+      background: var(--acid);
+      color: var(--ink);
+      border-block: 4px solid var(--ink);
+    }
+
+    .warning-track {
+      display: flex;
+      width: max-content;
+      animation: warning-scroll 25s linear infinite;
+    }
+
+    .warning-group {
+      display: flex;
+      flex: 0 0 auto;
+      align-items: center;
+    }
+
+    .warning-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 24px;
+      padding: 14px 22px;
+      white-space: nowrap;
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: .1em;
+    }
+
+    .warning-arrow {
+      font-size: 23px;
+      line-height: 1;
+    }
+
+    .tsc-notice-dialog {
+      width: min(520px, calc(100% - 32px));
+      max-width: none;
+      max-height: min(90vh, 760px);
+      padding: 0;
+      overflow: auto;
+      border: 1px solid #ffffff27;
+      border-radius: 7px;
+      background: linear-gradient(145deg, #25222a, #171619 76%);
+      color: var(--paper);
+      box-shadow: 0 32px 110px #000c, 0 0 70px #9c7bff1c;
+      animation: notice-arrive .42s cubic-bezier(.2, .8, .2, 1) both;
+    }
+
+    .tsc-notice-dialog::backdrop {
+      background: #09080bc7;
+      backdrop-filter: blur(8px);
+      animation: notice-backdrop .3s ease-out both;
+    }
+
+    .tsc-notice-content {
+      position: relative;
+      padding: 0 clamp(24px, 6vw, 40px) clamp(24px, 6vw, 36px);
+    }
+
+    .tsc-notice-art {
+      height: 174px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      overflow: hidden;
+      margin: 0 calc(clamp(24px, 6vw, 40px) * -1) 27px;
+      padding: 20px clamp(24px, 6vw, 40px);
+      border-bottom: 1px solid #ffffff1b;
+      background:
+        radial-gradient(circle at 72% 47%, #9c7bff55, transparent 29%),
+        linear-gradient(120deg, #d8ff3917, transparent 44%),
+        #1a181e;
+    }
+
+    .tsc-notice-art::before,
+    .tsc-notice-art::after {
+      position: absolute;
+      content: "";
+      pointer-events: none;
+    }
+
+    .tsc-notice-art::before {
+      width: 250px;
+      height: 250px;
+      top: -130px;
+      right: -45px;
+      border: 1px solid #ffffff12;
+      border-radius: 50%;
+      box-shadow: 0 0 0 22px #ffffff06, 0 0 0 47px #ffffff05;
+      animation: notice-orbit-pulse 4s ease-in-out infinite;
+    }
+
+    .tsc-notice-art::after {
+      right: 37%;
+      bottom: 16px;
+      width: 28px;
+      height: 1px;
+      background: var(--acid);
+      box-shadow: 9px -5px var(--acid), 18px 0 var(--acid);
+      opacity: .65;
+    }
+
+    .tsc-notice-art-label {
+      position: relative;
+      z-index: 1;
+      align-self: flex-start;
+      margin: 4px 0 0;
+      color: #d0ccc5;
+      font: 9px var(--mono);
+      letter-spacing: .14em;
+    }
+
+    .tsc-notice-record {
+      width: 128px;
+      height: 128px;
+      position: absolute;
+      top: 23px;
+      right: 48px;
+      border: 1px solid #ffffff26;
+      border-radius: 50%;
+      background:
+        conic-gradient(from 0deg, transparent 0deg 38deg, #ffffff25 52deg, transparent 68deg 184deg, #d8ff392b 201deg, transparent 218deg 360deg),
+        repeating-radial-gradient(circle, #29262d 0 5px, #38343d 6px 7px);
+      box-shadow: 0 12px 26px #0008, 0 0 32px #9c7bff20;
+      animation: notice-record-spin 18s linear infinite;
+    }
+
+    .tsc-notice-player {
+      width: min(220px, 52%);
+      height: 116px;
+      position: absolute;
+      z-index: 1;
+      bottom: -4px;
+      left: 9px;
+      overflow: visible;
+      animation: notice-player-float 3.8s ease-in-out infinite;
+    }
+
+    .tsc-notice-player-speaker {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: notice-speaker-pulse 1.6s ease-in-out infinite;
+    }
+
+    .tsc-notice-player-speaker:last-of-type { animation-delay: -.8s; }
+
+    .tsc-notice-player-wave {
+      transform-box: fill-box;
+      transform-origin: center bottom;
+      animation: notice-player-wave .62s ease-in-out var(--delay) infinite alternate;
+    }
+
+    .tsc-notice-player-wave:nth-of-type(1) { --delay: -.2s; }
+    .tsc-notice-player-wave:nth-of-type(2) { --delay: -.55s; }
+    .tsc-notice-player-wave:nth-of-type(3) { --delay: -.12s; }
+    .tsc-notice-player-wave:nth-of-type(4) { --delay: -.7s; }
+    .tsc-notice-player-wave:nth-of-type(5) { --delay: -.35s; }
+    .tsc-notice-player-wave:nth-of-type(6) { --delay: -.62s; }
+    .tsc-notice-player-wave:nth-of-type(7) { --delay: -.08s; }
+
+    .tsc-notice-player-light {
+      animation: notice-player-light 1.5s ease-in-out infinite;
+    }
+
+    .tsc-notice-record::before {
+      width: 43px;
+      height: 43px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      border: 5px solid #26232b;
+      border-radius: 50%;
+      background: radial-gradient(circle at 38% 34%, #efffa0, var(--acid) 55%, #a5c51f);
+      box-shadow: 0 0 20px #d8ff3944;
+      content: "";
+      transform: translate(-50%, -50%);
+      animation: notice-center-beat 2.2s ease-in-out infinite;
+    }
+
+    .tsc-notice-record::after {
+      width: 5px;
+      height: 5px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      border-radius: 50%;
+      background: #332f39;
+      content: "";
+      transform: translate(-50%, -50%);
+    }
+
+    .tsc-notice-spark {
+      position: absolute;
+      top: 35px;
+      right: 185px;
+      color: var(--acid);
+      font-size: 21px;
+      text-shadow: 0 0 18px #d8ff3988;
+      animation: notice-spark 2.8s ease-in-out infinite;
+    }
+
+    .tsc-notice-kicker {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0 0 14px;
+      color: var(--acid);
+      font: 10px var(--mono);
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .tsc-notice-kicker::before {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--acid);
+      box-shadow: 0 0 12px var(--acid);
+      content: "";
+      animation: notice-signal 1.8s ease-in-out infinite;
+    }
+
+    .tsc-notice-content h2 {
+      margin: 0;
+      font-size: clamp(29px, 6vw, 42px);
+      line-height: 1.02;
+      letter-spacing: -.05em;
+      overflow-wrap: anywhere;
+    }
+
+    .tsc-notice-message {
+      margin: 18px 0 27px;
+      color: #d0ccc5;
+      font-size: 14px;
+      line-height: 1.8;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
+
+    .tsc-notice-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding-top: 18px;
+      border-top: 1px solid #ffffff20;
+    }
+
+    .tsc-notice-signature {
+      color: #89848d;
+      font: 9px var(--mono);
+      letter-spacing: .08em;
+      line-height: 1.6;
+    }
+
+    .tsc-notice-close {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 0 19px;
+      border: 0;
+      border-radius: 2px;
+      background: var(--acid);
+      color: var(--ink);
+      font: 700 10px var(--mono);
+      letter-spacing: .08em;
+      cursor: pointer;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .tsc-notice-close::after {
+      content: "↗";
+      font-size: 14px;
+    }
+
+    .tsc-notice-close:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px #d8ff3933;
+    }
+
+    @keyframes notice-arrive {
+      from { opacity: 0; transform: translateY(14px) scale(.97); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @keyframes notice-backdrop {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes notice-record-spin {
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes notice-orbit-pulse {
+      50% { opacity: .45; transform: scale(1.07); }
+    }
+
+    @keyframes notice-center-beat {
+      50% { box-shadow: 0 0 31px #d8ff3988; transform: translate(-50%, -50%) scale(1.07); }
+    }
+
+    @keyframes notice-player-float {
+      0%, 100% { transform: translateY(0) rotate(-1deg); }
+      50% { transform: translateY(-4px) rotate(0deg); }
+    }
+
+    @keyframes notice-speaker-pulse {
+      50% { transform: scale(.88); }
+    }
+
+    @keyframes notice-player-wave {
+      to { transform: scaleY(.28); opacity: .62; }
+    }
+
+    @keyframes notice-player-light {
+      50% { opacity: .35; }
+    }
+
+    @keyframes notice-spark {
+      50% { opacity: .45; transform: scale(.8) rotate(20deg); }
+    }
+
+    @keyframes notice-signal {
+      50% { opacity: .45; box-shadow: 0 0 4px var(--acid); }
+    }
+
+    @media (max-width: 480px) {
+      .tsc-notice-art { height: 145px; margin-bottom: 23px; }
+      .tsc-notice-record { width: 106px; height: 106px; top: 19px; right: 34px; }
+      .tsc-notice-record::before { width: 37px; height: 37px; }
+      .tsc-notice-spark { top: 27px; right: 155px; }
+      .tsc-notice-player { width: min(175px, 52%); height: 93px; left: 2px; }
+      .tsc-notice-footer { align-items: flex-start; flex-direction: column; }
+      .tsc-notice-close { width: 100%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .tsc-notice-dialog,
+      .tsc-notice-dialog::backdrop,
+      .tsc-notice-record,
+      .tsc-notice-art::before,
+      .tsc-notice-record::before,
+      .tsc-notice-player,
+      .tsc-notice-player-speaker,
+      .tsc-notice-player-wave,
+      .tsc-notice-player-light,
+      .tsc-notice-spark,
+      .tsc-notice-kicker::before {
+        animation: none;
+      }
+    }
+
+    .tsc-notice-close:focus-visible {
+      outline: 2px solid var(--paper);
+      outline-offset: 4px;
+    }
+
+    .warning-ribbon:hover .warning-track {
+      animation-play-state: paused;
+    }
+
+    .hazard-ribbon {
+      overflow: hidden;
+      padding: 7px 0;
+      background: repeating-linear-gradient(135deg, var(--acid) 0 16px, var(--ink) 16px 32px);
+    }
+
+    .hazard-inner {
+      overflow: hidden;
+      background: var(--acid);
+      border-block: 3px solid var(--ink);
+      color: var(--ink);
+    }
+
+    .hazard-track {
+      display: flex;
+      width: max-content;
+      animation: warning-scroll 30s linear infinite reverse;
+    }
+
+    .hazard-group {
+      display: flex;
+      flex: 0 0 auto;
+      align-items: center;
+    }
+
+    .hazard-item {
+      padding: 11px 25px;
+      white-space: nowrap;
+      font: 700 14px var(--mono);
+      letter-spacing: .12em;
+    }
+
+    .hazard-item span {
+      padding: 0 23px;
+    }
+
+    .hazard-ribbon:hover .hazard-track {
+      animation-play-state: paused;
+    }
+
+    @keyframes warning-scroll {
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .7s ease, transform .7s cubic-bezier(.2, .7, .2, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes orbit {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes hover {
+
+      0%,
+      100% {
+        transform: rotate(5deg) translateY(0);
+      }
+
+      50% {
+        transform: rotate(2deg) translateY(-12px);
+      }
+    }
+
+    @keyframes pulse {
+      50% {
+        transform: scale(.94);
+        opacity: .84;
+      }
+    }
+
+    @keyframes drift {
+
+      0%,
+      100% {
+        translate: 0 0;
+      }
+
+      50% {
+        translate: 0 -9px;
+      }
+    }
+
+    @keyframes ticker {
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    @keyframes sound {
+      from {
+        transform: scaleY(.35);
+      }
+
+      to {
+        transform: scaleY(1);
+      }
+    }
+
+    @keyframes disc-spin {
+      to {
+        transform: translateX(-50%) rotate(360deg);
+      }
+    }
+
+    @keyframes equalize {
+      to {
+        height: 25px;
+        background: var(--acid);
+      }
+    }
+
+    @keyframes art-pulse {
+
+      0%,
+      100% {
+        transform: scale(.88);
+        opacity: .65;
+      }
+
+      50% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    @keyframes text-float {
+
+      0%,
+      100% {
+        transform: translateY(2px);
+      }
+
+      50% {
+        transform: translateY(-3px);
+      }
+    }
+
+    @keyframes reel-spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes pencil-sway {
+
+      0%,
+      100% {
+        transform: rotate(-1deg);
+      }
+
+      50% {
+        transform: rotate(1deg);
+      }
+    }
+
+    @keyframes about-float {
+
+      0%,
+      100% {
+        transform: translateY(0) rotate(-1deg);
+      }
+
+      50% {
+        transform: translateY(-9px) rotate(1deg);
+      }
+    }
+
+    @keyframes about-orbit {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes sparkle {
+
+      0%,
+      100% {
+        opacity: .55;
+        transform: scale(.78) rotate(-8deg);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.16) rotate(8deg);
+      }
+    }
+
+    @keyframes tag-bob {
+
+      0%,
+      100% {
+        translate: 0 0;
+      }
+
+      50% {
+        translate: 0 -6px;
+      }
+    }
+
+    @keyframes signal-bounce {
+      from {
+        transform: scaleY(.4);
+      }
+
+      to {
+        transform: scaleY(1);
+      }
+    }
+
+    @keyframes cassette-float {
+
+      0%,
+      100% {
+        transform: translateY(0) rotate(-90deg);
+      }
+
+      50% {
+        transform: translateY(-7px) rotate(-90deg);
+      }
+    }
+
+    @keyframes listen-ring {
+
+      0%,
+      100% {
+        transform: scale(.94);
+        opacity: .5;
+      }
+
+      50% {
+        transform: scale(1.06);
+        opacity: 1;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .wrap {
+        width: min(100% - 38px, 560px);
+      }
+
+      header {
+        height: 70px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .nav-cta {
+        padding: 11px 13px;
+        font-size: 10px;
+      }
+
+      .hero {
+        padding: 75px 0 85px;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .brand {
+        font-size: clamp(16px, 4.8vw, 20px);
+      }
+
+      h1 {
+        font-size: clamp(48px, 12vw, 72px);
+        margin-top: 26px;
+      }
+
+      .intro {
+        font-size: 14px;
+      }
+
+      .cover-wrap {
+        min-height: 400px;
+        margin-top: 4px;
+      }
+
+      .orbit {
+        width: min(350px, 88vw);
+      }
+
+      .player-scene {
+        height: 365px;
+      }
+
+      .player-disc {
+        top: -40px;
+      }
+
+      .player-deck {
+        height: 195px;
+        bottom: 13px;
+      }
+
+      .deck-display {
+        top: 14px;
+        left: 14px;
+      }
+
+      .deck-brand {
+        top: 19px;
+        right: 15px;
+      }
+
+      .player-controls {
+        right: 13px;
+        bottom: 13px;
+        left: 13px;
+      }
+
+      .player-button {
+        min-width: 103px;
+        min-height: 35px;
+        font-size: 9px;
+      }
+
+      .scene-note {
+        display: none;
+      }
+
+      .tag-a {
+        left: -2px;
+        top: 49px;
+      }
+
+      .tag-b {
+        right: -2px;
+        bottom: 42px;
+      }
+
+      .hero-index {
+        display: none;
+      }
+
+      .section {
+        padding: 72px 0;
+      }
+
+      .subscribe {
+        padding: 48px 0 58px;
+      }
+
+      .subscribe>.wrap {
+        grid-template-columns: 1fr;
+        grid-template-areas: "visual" "copy" "perks";
+        gap: 22px;
+      }
+
+      .listen-visual {
+        width: min(100%, 350px);
+        height: 245px;
+      }
+
+      .listen-cassette {
+        width: 155px;
+        height: 252px;
+      }
+
+      .listen-visual::after {
+        right: 8px;
+        bottom: 28px;
+      }
+
+      .listen-eq {
+        bottom: 5px;
+      }
+
+      .subscribe h2 {
+        margin: 14px 0 18px;
+      }
+
+      .listen-perks {
+        margin-top: 23px;
+      }
+
+      .contacts {
+        padding: 52px 0 60px;
+      }
+
+      .contacts h2 {
+        margin: 15px 0 13px;
+      }
+
+      .contacts-intro {
+        font-size: 14px;
+      }
+
+      .section-head {
+        align-items: start;
+        flex-direction: column;
+        gap: 20px;
+        margin-bottom: 31px;
+      }
+
+      .section-aside {
+        max-width: 320px;
+      }
+
+      .episode-feature {
+        grid-template-columns: 35px 1fr auto;
+        gap: 12px;
+        padding: 20px 0;
+      }
+
+      .ep-title {
+        font-size: 22px;
+      }
+
+      .play-button {
+        width: 45px;
+        height: 45px;
+      }
+
+      .episodes-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .episode-card {
+        min-height: 225px;
+      }
+
+      .episode-art {
+        height: 98px;
+      }
+
+      .manifesto {
+        padding: 40px 0 28px;
+        clip-path: polygon(0 12px, 100% 0, 100% calc(100% - 12px), 0 100%);
+      }
+
+      .manifesto-inner {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .manifesto-inner::before {
+        top: -40px;
+      }
+
+      .manifesto-copy {
+        max-width: none;
+        padding: 16px;
+        font-size: 15px;
+      }
+
+      .manifesto-copy .manifesto-lead {
+        font-size: clamp(24px, 7vw, 31px);
+      }
+
+      .manifesto-copy .manifesto-signature {
+        font-size: 40px;
+      }
+
+      .studio {
+        padding: 24px 0 30px;
+      }
+
+      .studio .section-head {
+        margin-bottom: 22px;
+      }
+
+      .studio-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 280px 180px 180px;
+        grid-template-areas: "one one" "two three" "four four";
+        gap: 9px;
+      }
+
+      .studio-photo-user {
+        grid-column: span 1;
+        min-height: 180px;
+      }
+
+      .studio-caption {
+        right: 11px;
+        bottom: 11px;
+        left: 11px;
+        font-size: 11px;
+      }
+
+      .studio-live-ribbon {
+        top: 48px;
+        right: -40px;
+        width: 140px;
+        font-size: 8px;
+      }
+
+      .graphic {
+        width: min(300px, calc(100% - 12px));
+        margin-top: 14px;
+      }
+
+      .graphic-tag-one {
+        left: 9px;
+      }
+
+      .graphic-tag-two {
+        right: -7px;
+        bottom: 20px;
+      }
+
+      .about-signal {
+        gap: 10px;
+        font-size: 8px;
+      }
+
+      .footer-inner {
+        gap: 16px;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .warning-item {
+        font-size: 14px;
+        padding: 12px 16px;
+        gap: 16px;
+      }
+
+      .warning-arrow {
+        font-size: 19px;
+      }
+
+      .hazard-item {
+        font-size: 11px;
+        padding: 10px 18px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+
+      .manifesto::before,
+      .graphic,
+      .cassette-reel,
+      .pencil-doodle,
+      .doodle-spark,
+      .graphic-tag,
+      .about-signal-bars i,
+      .listen-cassette,
+      .listen-visual::before,
+      .listen-eq i,
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+
+      .player-scene.is-playing .player-disc {
+        animation-duration: 8s !important;
+        animation-iteration-count: infinite !important;
+      }
+
+      .player-scene.is-playing .deck-eq i {
+        animation-duration: .55s !important;
+        animation-iteration-count: infinite !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="wrap" aria-label="Main navigation">
+      <a class="brand" href="#" aria-label="The Student Collective home">STUDENT<span>/</span>COLLECTIVE</a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#listen">Listen</a>
+        <a href="member-form.html" target="_blank" rel="noopener">Member form</a>
+      </div>
+      <a class="nav-cta" href="/admin/login">TUNE IN <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <div class="topline mono">An SRU student podcast · Real stories, no filter</div>
+          <h1>THE<br>STUDENT<br><span>COLLECTIVE.</span></h1>
+          <p class="intro">College can feel like a lot. We bring SRU students honest conversations with people who have
+            found their way, plus stand-up, campus stories, and plenty of reasons to laugh.</p>
+          <div class="hero-actions">
+            <a class="button" href="#episodes"><span aria-hidden="true">▶</span> FIND YOUR PEOPLE</a>
+            <a class="text-link" href="#about">WHAT IS TSC?</a>
+          </div>
+        </div>
+        <div class="cover-wrap" aria-label="The Student Collective animated CD player">
+          <div class="orbit"></div>
+          <div class="float-tag tag-a">Real stories<br>shared out loud ↗</div>
+          <div class="player-scene is-playing" id="playerScene" role="group"
+            aria-label="Animated Student Collective CD player">
+            <div class="player-glow" aria-hidden="true"></div>
+            <div class="player-disc" aria-hidden="true"><span class="disc-label">TSC</span></div>
+            <div class="player-deck">
+              <div class="deck-display" aria-live="polite">
+                <span class="display-label">SRU STUDENT RADIO</span>
+                <span class="display-time" id="playerStatus">SPINNING / 00:01</span>
+              </div>
+              <div class="deck-brand">THE STUDENT<br><span>COLLECTIVE</span></div>
+              <div class="player-controls">
+                <button class="player-button" id="playerButton" type="button"
+                  aria-label="Pause the decorative CD animation" aria-pressed="true">
+                  <span class="player-button-icon" id="playerButtonIcon" aria-hidden="true">Ⅱ</span>
+                  <span id="playerButtonLabel">PAUSE DISC</span>
+                </button>
+                <span class="scene-note">SIDE A · SRU STORIES</span>
+                <div class="deck-eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="float-tag tag-b">Not just grades<br>you're a whole story ↘</div>
+        </div>
+      </div>
+      <div class="hero-index mono">SCROLL TO EXPLORE &nbsp; ↓</div>
+    </section>
+
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track">
+        <div class="ticker-item">YOU ARE MORE THAN YOUR GRADES <span>✳</span></div>
+        <div class="ticker-item">BIG DREAMS, DETOURS TOO <span>✳</span></div>
+        <div class="ticker-item">MAKE ROOM FOR A LAUGH <span>✳</span></div>
+        <div class="ticker-item">YOU ARE MORE THAN YOUR GRADES <span>✳</span></div>
+        <div class="ticker-item">BIG DREAMS, DETOURS TOO <span>✳</span></div>
+        <div class="ticker-item">MAKE ROOM FOR A LAUGH <span>✳</span></div>
+      </div>
+    </div>
+
+    <section class="section" id="episodes">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <div class="eyebrow mono">01 — ON THE MIC</div>
+            <h2>Real talk.<br>Fresh perspectives.</h2>
+          </div>
+          <p class="section-aside">Stories about the stuff students actually live through: study stress, big ambitions,
+            unexpected turns, and finding your people.</p>
+        </div>
+        <article class="episode-feature reveal">
+          <div class="ep-number">TSC<br>01</div>
+          <div>
+            <h3 class="ep-title">You are more than your GPA.</h3>
+            <div class="ep-meta">Student life &nbsp;·&nbsp; Academic pressure &nbsp;·&nbsp; Honest conversations</div>
+            <div class="waveform" id="waveform" aria-hidden="true"></div>
+          </div>
+          <button class="play-button" id="playButton" type="button" aria-label="Start episode waveform animation"
+            aria-pressed="false">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          </button>
+        </article>
+        <div class="episodes-grid">
+          <a class="episode-card reveal" href="#listen">
+            <div class="episode-art" aria-hidden="true"><span>AFTER<br>CLASS</span></div>
+            <div class="card-top"><span>GUEST STORIES</span><span class="card-arrow">↗</span></div>
+            <div>
+              <h3>The detours behind the success story</h3>
+              <p>Careers · Setbacks · Lessons learned</p>
+            </div>
+          </a>
+          <a class="episode-card reveal" href="#listen">
+            <div class="episode-art" aria-hidden="true"><span>OPEN<br>MIC</span></div>
+            <div class="card-top"><span>COMEDY CLUB</span><span class="card-arrow">↗</span></div>
+            <div>
+              <h3>Campus life, with the punchlines left in</h3>
+              <p>Stand-up · Student stories · Good laughs</p>
+            </div>
+          </a>
+          <a class="episode-card reveal" href="#listen">
+            <div class="episode-art" aria-hidden="true"><span>REAL<br>TALK</span></div>
+            <div class="card-top"><span>STUDENT LIFE</span><span class="card-arrow">↗</span></div>
+            <div>
+              <h3>When college feels like a lot</h3>
+              <p>Academic pressure · Finding your people</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="manifesto" id="about">
+      <div class="wrap manifesto-inner">
+        <div class="reveal">
+          <div class="eyebrow mono">02 — WHY WE'RE HERE</div>
+          <h2>You're more<br><em>than your grades.</em></h2>
+          <div class="graphic" aria-hidden="true">
+            <svg class="about-doodle" viewBox="0 0 420 330" aria-hidden="true" focusable="false">
+              <g class="doodle-spark" fill="#ed8176" stroke="#272321" stroke-width="2">
+                <path d="M43 42 L48 55 L61 59 L48 63 L43 76 L39 63 L26 59 L39 55 Z" />
+              </g>
+              <g class="doodle-spark" fill="#39746e" stroke="#272321" stroke-width="2">
+                <path d="M373 87 L378 99 L390 103 L378 108 L373 120 L368 108 L356 103 L368 99 Z" />
+              </g>
+              <g class="doodle-spark" fill="#e8bc67" stroke="#272321" stroke-width="2">
+                <path d="M66 266 L70 275 L79 279 L70 283 L66 293 L62 283 L53 279 L62 275 Z" />
+              </g>
+              <path d="M93 214 C69 244 90 264 138 271 L275 293 C321 299 342 278 324 254 L301 236" fill="none"
+                stroke="#272321" stroke-width="12" stroke-linecap="round" />
+              <path d="M93 214 C69 244 90 264 138 271 L275 293 C321 299 342 278 324 254 L301 236" fill="none"
+                stroke="#9b715d" stroke-width="7" stroke-linecap="round" />
+              <g transform="rotate(-7 207 165)" stroke="#272321" stroke-width="5" stroke-linejoin="round">
+                <rect x="42" y="69" width="326" height="185" rx="19" fill="#99988b" />
+                <rect x="56" y="78" width="311" height="165" rx="12" fill="#e9dfbf" />
+                <path d="M57 169 H366 V218 Q366 240 343 240 H78 Q57 240 57 218 Z" fill="#de8572" />
+                <rect x="73" y="94" width="29" height="31" rx="3" fill="#647d88" stroke="none" />
+                <text x="80" y="117" fill="#f7f2df" stroke="none" font-family="DM Mono, monospace" font-size="21"
+                  font-weight="700">A</text>
+                <path d="M115 102 H320 M115 119 H278" fill="none" stroke-width="2.5" />
+                <text x="118" y="116" fill="#272321" stroke="none" font-family="Space Grotesk, sans-serif"
+                  font-size="12" font-weight="700">YOUR STORY / SIDE A</text>
+                <rect x="110" y="135" width="193" height="70" rx="11" fill="#c5bd9e" />
+                <rect x="160" y="149" width="94" height="43" rx="4" fill="#514237" />
+                <path d="M174 150 V191 M240 150 V191" fill="none" stroke="#e3d8bc" stroke-width="5" />
+                <g class="cassette-reel" fill="#eee5c8" stroke="#272321" stroke-width="4">
+                  <circle cx="141" cy="170" r="19" />
+                  <path d="m141 159 4 7 8 1-6 6 1 8-7-4-7 4 1-8-6-6 8-1z" fill="#647d88" stroke-width="2" />
+                </g>
+                <g class="cassette-reel" fill="#eee5c8" stroke="#272321" stroke-width="4">
+                  <circle cx="273" cy="170" r="19" />
+                  <path d="m273 159 4 7 8 1-6 6 1 8-7-4-7 4 1-8-6-6 8-1z" fill="#647d88" stroke-width="2" />
+                </g>
+                <path d="M122 211 H291 L316 246 H96 Z" fill="#c8c0a5" />
+                <circle cx="143" cy="225" r="6" fill="#272321" />
+                <circle cx="206" cy="225" r="9" fill="#272321" />
+                <circle cx="270" cy="225" r="6" fill="#272321" />
+                <circle cx="69" cy="95" r="6" fill="#d7ccb0" />
+                <circle cx="350" cy="95" r="6" fill="#d7ccb0" />
+                <circle cx="70" cy="225" r="6" fill="#d7ccb0" />
+                <circle cx="348" cy="225" r="6" fill="#d7ccb0" />
+                <text x="291" y="227" fill="#272321" stroke="none" font-family="DM Mono, monospace" font-size="10"
+                  font-weight="700">TSC</text>
+              </g>
+              <g class="pencil-doodle" stroke="#272321" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+                <path d="M302 34 L333 47 L238 270 L213 289 L214 257 Z" fill="#efb536" />
+                <path d="M302 34 L315 5 Q319 -2 327 2 L343 9 Q350 13 346 21 L333 47 Z" fill="#dc8790" />
+                <path d="M214 257 L238 270 L213 289 Z" fill="#e9c599" />
+                <path d="M213 289 L221 279 L216 276 Z" fill="#272321" />
+                <path d="M287 68 L320 82 M279 88 L312 102 M271 108 L304 122" fill="none" stroke="#f7db86"
+                  stroke-width="4" />
+                <path d="M310 20 L339 31 M305 31 L334 43" fill="none" stroke="#647d88" stroke-width="5" />
+              </g>
+            </svg>
+            <span class="graphic-tag graphic-tag-one">NO PERFECT PATH</span>
+            <span class="graphic-tag graphic-tag-two">YOU'VE GOT THIS</span>
+          </div>
+          <div class="about-signal" aria-hidden="true">
+            <span>STORIES FOR EVERY SIDE OF STUDENT LIFE</span>
+            <span class="about-signal-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+          </div>
+        </div>
+        <div class="manifesto-copy reveal">
+          <span class="mono">A NOTE FROM YOUR PEOPLE · SRU</span>
+          <p class="manifesto-lead">College can be a lot.<br><em>You don't have to do it alone.</em></p>
+          <p>Real conversations about academic pressure, finding your way, and the people who make campus life worth
+            it—plus guest stories and stand-up.</p>
+          <a class="text-link" href="#listen" style="color:#171619;border-color:#777">PULL UP A CHAIR &nbsp; ↗</a>
+          <div class="manifesto-signature" aria-hidden="true">Student Collective</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="studio" id="gallery">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <div class="eyebrow mono">03 — THE TSC GALLERY</div>
+            <h2>SRU student life,<br>in the mix.</h2>
+          </div>
+          <p class="section-aside">A glimpse of the stories, sounds, laughs, and people that bring The Student
+            Collective to life.</p>
+        </div>
+        <button class="gallery-open-button" id="openGalleryViewer" type="button">OPEN FULL-SCREEN GALLERY <span aria-hidden="true">↗</span></button>
+        <div class="studio-grid">
+          <figure class="studio-photo reveal" data-gallery-section="live">
+            <img
+              src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&amp;fit=crop&amp;w=1200&amp;q=85"
+              alt="DJ's hands working a turntable under purple stage lights" loading="lazy">
+            <span class="studio-live-ribbon">RUNNING</span>
+            <figcaption class="studio-caption">Campus sounds, shared out loud <span>01 / LIVE</span></figcaption>
+          </figure>
+          <figure class="studio-photo reveal" data-gallery-section="studio">
+            <img
+              src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&amp;fit=crop&amp;w=800&amp;q=85"
+              alt="Microphones and instruments in a recording studio" loading="lazy">
+            <figcaption class="studio-caption">Where every conversation starts <span>02 / PODCAST</span></figcaption>
+          </figure>
+          <figure class="studio-photo reveal" data-gallery-section="voices">
+            <img
+              src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&amp;fit=crop&amp;w=800&amp;q=85"
+              alt="Microphone ready for a student story" loading="lazy">
+            <figcaption class="studio-caption">Student voices take the mic <span>03 / VOICES</span></figcaption>
+          </figure>
+          <figure class="studio-photo reveal" data-gallery-section="campus">
+            <img
+              src="https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?auto=format&amp;fit=crop&amp;w=1000&amp;q=85"
+              alt="An audience sharing a moment at a live music event" loading="lazy">
+            <figcaption class="studio-caption">Room for campus laughs &amp; live moments <span>04 / COMMUNITY</span>
+            </figcaption>
+          </figure>
+        </div>
+        <p id="managedGalleryStatus" class="section-aside" role="status" aria-live="polite" hidden></p>
+      </div>
+    </section>
+
+    <section class="subscribe" id="listen">
+      <div class="wrap reveal">
+        <div class="listen-copy">
+          <div class="topline mono">04 — JOIN THE COLLECTIVE</div>
+          <h2>You don't have to<br>do college <span style="color:var(--acid)">alone.</span></h2>
+          <p>Bring your questions, your stories, or just your ears. There's room for you here.</p>
+          <div class="platforms" id="socialLinks">
+            <a data-social-link="instagram" href="https://www.instagram.com/" target="_blank" rel="noreferrer">INSTAGRAM ↗</a>
+            <a data-social-link="whatsapp" href="https://wa.me/" target="_blank" rel="noreferrer">WHATSAPP ↗</a>
+            <a data-social-link="youtube" href="https://www.youtube.com/" target="_blank" rel="noreferrer">YOUTUBE ↗</a>
+          </div>
+        </div>
+        <div class="listen-visual">
+          <img class="listen-cassette" src="tsc-cassette.jpg"
+            alt="A red and gold cassette tape representing the stories shared by The Student Collective">
+          <div class="listen-eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
+        <div class="listen-perks" aria-label="What to expect">
+          <span>Honest guest stories</span>
+          <span>Student voices</span>
+          <span>Campus laughs</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="warning-ribbon" role="region" aria-label="The Student Collective message">
+    <div class="warning-track" aria-hidden="true">
+      <div class="warning-group">
+        <div class="warning-item"><span class="warning-arrow">»</span> MORE THAN A GPA <span
+            class="warning-arrow">»</span> THERE'S ROOM FOR YOUR STORY</div>
+        <div class="warning-item"><span class="warning-arrow">»</span> MORE THAN A GPA <span
+            class="warning-arrow">»</span> THERE'S ROOM FOR YOUR STORY</div>
+        <div class="warning-item"><span class="warning-arrow">»</span> MORE THAN A GPA <span
+            class="warning-arrow">»</span> THERE'S ROOM FOR YOUR STORY</div>
+      </div>
+      <div class="warning-group">
+        <div class="warning-item"><span class="warning-arrow">»</span> MORE THAN A GPA <span
+            class="warning-arrow">»</span> THERE'S ROOM FOR YOUR STORY</div>
+        <div class="warning-item"><span class="warning-arrow">»</span> MORE THAN A GPA <span
+            class="warning-arrow">»</span> THERE'S ROOM FOR YOUR STORY</div>
+        <div class="warning-item"><span class="warning-arrow">»</span> MORE THAN A GPA <span
+            class="warning-arrow">»</span> THERE'S ROOM FOR YOUR STORY</div>
+      </div>
+    </div>
+  </div>
+  <div class="hazard-ribbon" aria-hidden="true">
+    <div class="hazard-inner">
+      <div class="hazard-track">
+        <div class="hazard-group">
+          <div class="hazard-item">REAL STORIES <span>✳</span> BIG LAUGHS <span>✳</span> SRU STUDENTS <span>✳</span> ALL
+            IN ONE PLACE <span>✳</span></div>
+          <div class="hazard-item">REAL STORIES <span>✳</span> BIG LAUGHS <span>✳</span> SRU STUDENTS <span>✳</span> ALL
+            IN ONE PLACE <span>✳</span></div>
+        </div>
+        <div class="hazard-group">
+          <div class="hazard-item">REAL STORIES <span>✳</span> BIG LAUGHS <span>✳</span> SRU STUDENTS <span>✳</span> ALL
+            IN ONE PLACE <span>✳</span></div>
+          <div class="hazard-item">REAL STORIES <span>✳</span> BIG LAUGHS <span>✳</span> SRU STUDENTS <span>✳</span> ALL
+            IN ONE PLACE <span>✳</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <a class="brand" href="#" aria-label="The Student Collective home">STUDENT<span>/</span>COLLECTIVE</a>
+      <span>THE STUDENT COLLECTIVE · MADE FOR SRU STUDENTS</span>
+      <span>PYTHON · FLASK BACKEND</span>
+      <div class="footer-links"><a href="#episodes">SHOWS</a><a href="#listen">JOIN US ↗</a></div>
+    </div>
+  </footer>
+
+  <dialog class="gallery-viewer" id="galleryViewer" aria-labelledby="galleryViewerTitle">
+    <div class="gallery-viewer-inner">
+      <div class="gallery-viewer-header">
+        <div>
+          <p class="gallery-viewer-kicker">03 — THE TSC GALLERY</p>
+          <h2 id="galleryViewerTitle">SRU student life, in the mix.</h2>
+          <p>Photos and videos from the TSC community.</p>
+        </div>
+        <button class="gallery-view-close" id="closeGalleryViewer" type="button" aria-label="Close full-screen gallery">×</button>
+      </div>
+      <nav class="gallery-folder-nav" id="galleryFolderNav" aria-label="Gallery folders"></nav>
+      <div class="gallery-view-grid" id="galleryViewerGrid"></div>
+    </div>
+  </dialog>
+
+  <dialog class="tsc-notice-dialog" id="tscNoticeDialog" aria-labelledby="tscNoticeTitle" aria-describedby="tscNoticeMessage">
+    <div class="tsc-notice-content">
+      <div class="tsc-notice-art" aria-hidden="true">
+        <p class="tsc-notice-art-label">TSC BROADCAST / 001</p>
+        <svg class="tsc-notice-player" viewBox="0 0 280 150" role="img" aria-label="Animated TSC portable music player">
+          <defs>
+            <linearGradient id="notice-player-shell" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#45404b"/>
+              <stop offset="1" stop-color="#211e26"/>
+            </linearGradient>
+            <linearGradient id="notice-player-tape" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#d8ff39"/>
+              <stop offset="1" stop-color="#9c7bff"/>
+            </linearGradient>
+          </defs>
+          <path d="M86 38V26q0-8 8-8h89q8 0 8 8v12" fill="none" stroke="#77717d" stroke-width="6"/>
+          <rect x="14" y="39" width="252" height="94" rx="15" fill="#0d0c10" opacity=".45"/>
+          <rect x="10" y="33" width="252" height="94" rx="15" fill="url(#notice-player-shell)" stroke="#746d79" stroke-width="2"/>
+          <rect x="22" y="42" width="228" height="4" rx="2" fill="#ffffff20"/>
+          <g class="tsc-notice-player-speaker">
+            <circle cx="54" cy="81" r="29" fill="#211e25" stroke="#8b8490" stroke-width="2"/>
+            <circle cx="54" cy="81" r="22" fill="#342f39" stroke="#9c7bff" stroke-opacity=".7"/>
+            <circle cx="54" cy="81" r="14" fill="#242129" stroke="#77717d"/>
+            <circle cx="54" cy="81" r="5" fill="#d8ff39"/>
+          </g>
+          <g class="tsc-notice-player-speaker">
+            <circle cx="218" cy="81" r="29" fill="#211e25" stroke="#8b8490" stroke-width="2"/>
+            <circle cx="218" cy="81" r="22" fill="#342f39" stroke="#9c7bff" stroke-opacity=".7"/>
+            <circle cx="218" cy="81" r="14" fill="#242129" stroke="#77717d"/>
+            <circle cx="218" cy="81" r="5" fill="#d8ff39"/>
+          </g>
+          <rect x="91" y="55" width="90" height="53" rx="5" fill="#131116" stroke="#a69baa" stroke-width="1.5"/>
+          <rect x="98" y="61" width="76" height="38" rx="3" fill="#332d39"/>
+          <path d="M103 66h66v9h-66z" fill="url(#notice-player-tape)" opacity=".92"/>
+          <text x="136" y="73" fill="#211d24" font-family="DM Mono, monospace" font-size="6" font-weight="700" text-anchor="middle">STUDENT / COLLECTIVE</text>
+          <circle cx="116" cy="87" r="7" fill="#17151b" stroke="#d8ff39" stroke-width="1.5"/>
+          <circle cx="156" cy="87" r="7" fill="#17151b" stroke="#9c7bff" stroke-width="1.5"/>
+          <circle cx="116" cy="87" r="2" fill="#d8ff39"/>
+          <circle cx="156" cy="87" r="2" fill="#9c7bff"/>
+          <path d="M123 87h26" stroke="#b8a9c2" stroke-width="1.5"/>
+          <rect x="103" y="112" width="15" height="5" rx="2.5" fill="#d8ff39"/>
+          <circle class="tsc-notice-player-light" cx="238" cy="51" r="3" fill="#d8ff39"/>
+          <g fill="#d8ff39">
+            <rect class="tsc-notice-player-wave" x="93" y="24" width="3" height="10" rx="1.5"/>
+            <rect class="tsc-notice-player-wave" x="102" y="16" width="3" height="18" rx="1.5"/>
+            <rect class="tsc-notice-player-wave" x="111" y="20" width="3" height="14" rx="1.5"/>
+            <rect class="tsc-notice-player-wave" x="120" y="11" width="3" height="23" rx="1.5"/>
+            <rect class="tsc-notice-player-wave" x="129" y="18" width="3" height="16" rx="1.5"/>
+            <rect class="tsc-notice-player-wave" x="138" y="14" width="3" height="20" rx="1.5"/>
+            <rect class="tsc-notice-player-wave" x="147" y="23" width="3" height="11" rx="1.5"/>
+          </g>
+        </svg>
+        <span class="tsc-notice-spark">✳</span>
+        <div class="tsc-notice-record"></div>
+      </div>
+      <p class="tsc-notice-kicker">A MESSAGE FROM THE STUDENT COLLECTIVE</p>
+      <h2 id="tscNoticeTitle"></h2>
+      <p class="tsc-notice-message" id="tscNoticeMessage"></p>
+      <div class="tsc-notice-footer">
+        <span class="tsc-notice-signature">STUDENT/COLLECTIVE<br>KEEP IT IN THE LOOP</span>
+        <button class="tsc-notice-close" id="closeTscNotice" type="button">GOT IT</button>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="gallery-store.js"></script>
+  <script>
+    const wave = document.getElementById("waveform");
+    const playButton = document.getElementById("playButton");
+    const playerScene = document.getElementById("playerScene");
+    const playerButton = document.getElementById("playerButton");
+    const playerButtonIcon = document.getElementById("playerButtonIcon");
+    const playerButtonLabel = document.getElementById("playerButtonLabel");
+    const playerStatus = document.getElementById("playerStatus");
+    const tscNoticeDialog = document.getElementById("tscNoticeDialog");
+    document.getElementById("closeTscNotice").addEventListener("click", () => tscNoticeDialog.close());
+
+    window.TSCGalleryStore.getNotice().then(notice => {
+      if (!notice?.message?.trim()) return;
+      document.getElementById("tscNoticeTitle").textContent = notice.title || "A notice from TSC";
+      document.getElementById("tscNoticeMessage").textContent = notice.message;
+      tscNoticeDialog.showModal();
+    }).catch(error => {
+      console.error(`The TSC notice could not be loaded: ${error.message}`);
+    });
+
+    function parsePublicSocialLink(value) {
+      try {
+        const url = new URL(value);
+        if ((url.protocol !== "https:" && url.protocol !== "http:") || !url.hostname || url.username || url.password) {
+          return null;
+        }
+        return url.href;
+      } catch {
+        return null;
+      }
+    }
+
+    window.TSCGalleryStore.getSocialLinks().then(saved => {
+      if (!saved) return;
+      Object.entries(saved.links || {}).forEach(([name, value]) => {
+        const link = document.querySelector(`[data-social-link="${name}"]`);
+        const safeUrl = typeof value === "string" ? parsePublicSocialLink(value) : null;
+        if (link && safeUrl) {
+          link.href = safeUrl;
+        } else if (link) {
+          console.error(`The saved TSC ${name} link is invalid; using the default destination.`);
+        }
+      });
+    }).catch(error => {
+      console.error(`TSC social links could not be loaded: ${error.message}`);
+    });
+
+    const heights = [8, 14, 23, 13, 28, 17, 10, 25, 32, 18, 12, 27, 16, 9, 22, 31, 15, 24, 11, 28, 17, 8, 22, 13, 30, 18, 10, 25, 14, 21, 9, 27, 16, 11, 24, 32, 18, 13, 26, 9, 20, 14, 29, 17, 11, 23, 15, 30, 10, 19, 27, 13, 22, 8, 17, 25, 12, 29, 16, 10];
+    heights.forEach((height, index) => {
+      const bar = document.createElement("i");
+      bar.style.setProperty("--h", `${height}px`);
+      bar.style.setProperty("--d", `${index * -0.035}s`);
+      wave.appendChild(bar);
+    });
+    playButton.addEventListener("click", () => {
+      const isPlaying = playButton.getAttribute("aria-pressed") === "true";
+      playButton.setAttribute("aria-pressed", String(!isPlaying));
+      playButton.setAttribute("aria-label", isPlaying ? "Start episode waveform animation" : "Pause episode waveform animation");
+      playButton.innerHTML = isPlaying
+        ? '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>'
+        : '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg>';
+      wave.classList.toggle("playing", !isPlaying);
+    });
+    playerButton.addEventListener("click", () => {
+      const isPlaying = playerButton.getAttribute("aria-pressed") === "true";
+      playerButton.setAttribute("aria-pressed", String(!isPlaying));
+      playerButton.setAttribute("aria-label", isPlaying ? "Start the decorative CD animation" : "Pause the decorative CD animation");
+      playerButtonIcon.textContent = isPlaying ? "▶" : "Ⅱ";
+      playerButtonLabel.textContent = isPlaying ? "START SPIN" : "PAUSE DISC";
+      playerStatus.textContent = isPlaying ? "READY / 00:00" : "SPINNING / 00:01";
+      playerScene.classList.toggle("is-playing", !isPlaying);
+    });
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.14 });
+    document.querySelectorAll(".reveal").forEach(element => observer.observe(element));
+
+    const studioGrid = document.querySelector(".studio-grid");
+    const managedGalleryStatus = document.getElementById("managedGalleryStatus");
+    const managedImageUrls = [];
+    const galleryViewer = document.getElementById("galleryViewer");
+    const galleryViewerGrid = document.getElementById("galleryViewerGrid");
+    const galleryFolderNav = document.getElementById("galleryFolderNav");
+    const galleryNavLink = document.querySelector('.nav-links a[href="#gallery"]');
+    const gallerySectionLabels = {
+      studio: "STUDIO · 01",
+      live: "LIVE · 02",
+      voices: "VOICES · 03",
+      campus: "CAMPUS · 04"
+    };
+    let activeGallerySection = "all";
+
+    function renderGalleryFolders(photos) {
+      const folders = [
+        { id: "all", label: "ALL IMAGES" },
+        ...Object.entries(gallerySectionLabels).map(([id, label]) => ({ id, label }))
+      ];
+      galleryFolderNav.replaceChildren();
+      folders.forEach(folder => {
+        const count = folder.id === "all"
+          ? photos.length
+          : photos.filter(photo => photo.dataset.gallerySection === folder.id).length;
+        const button = document.createElement("button");
+        button.className = "gallery-folder-button";
+        button.type = "button";
+        button.setAttribute("aria-pressed", String(activeGallerySection === folder.id));
+        button.append(document.createTextNode(folder.label));
+        const itemCount = document.createElement("span");
+        itemCount.textContent = String(count).padStart(2, "0");
+        button.append(itemCount);
+        button.addEventListener("click", () => {
+          activeGallerySection = folder.id;
+          renderGalleryViewer();
+        });
+        galleryFolderNav.append(button);
+      });
+    }
+
+    function renderGalleryViewer() {
+      const photos = [...studioGrid.querySelectorAll(".studio-photo")];
+      renderGalleryFolders(photos);
+      galleryViewerGrid.replaceChildren();
+      const visiblePhotos = photos.filter(photo =>
+        activeGallerySection === "all" || photo.dataset.gallerySection === activeGallerySection
+      );
+      if (!visiblePhotos.length) {
+        const empty = document.createElement("div");
+        empty.className = "gallery-view-empty";
+        const heading = document.createElement("strong");
+        heading.textContent = photos.length
+          ? "This folder is waiting for its first story."
+          : "The gallery is waiting for its first story.";
+        const message = document.createElement("span");
+        message.textContent = photos.length
+          ? "Add a photo or video to this folder from the admin page."
+          : "Check back soon for more from the collective.";
+        empty.append(heading, message);
+        galleryViewerGrid.append(empty);
+        return;
+      }
+      visiblePhotos.forEach(photo => {
+        const clone = photo.cloneNode(true);
+        clone.classList.remove("reveal", "visible");
+        clone.querySelectorAll(".reveal, .visible").forEach(element => element.classList.remove("reveal", "visible"));
+        galleryViewerGrid.append(clone);
+      });
+    }
+
+    async function openGalleryViewer() {
+      await loadManagedGallery();
+      renderGalleryViewer();
+      if (!galleryViewer.open) galleryViewer.showModal();
+    }
+
+    document.getElementById("openGalleryViewer").addEventListener("click", openGalleryViewer);
+    galleryNavLink.addEventListener("click", event => {
+      event.preventDefault();
+      openGalleryViewer();
+    });
+    document.getElementById("closeGalleryViewer").addEventListener("click", () => galleryViewer.close());
+    galleryViewer.addEventListener("click", event => {
+      if (event.target === galleryViewer) galleryViewer.close();
+    });
+    galleryViewer.addEventListener("cancel", event => {
+      event.preventDefault();
+      galleryViewer.close();
+    });
+
+    async function loadManagedGallery() {
+      try {
+        managedImageUrls.forEach(url => URL.revokeObjectURL(url));
+        managedImageUrls.length = 0;
+        studioGrid.querySelectorAll(".studio-photo-user").forEach(photo => photo.remove());
+        const images = await window.TSCGalleryStore.getAll();
+        images.forEach((item, index) => {
+          const section = gallerySectionLabels[item.section] ? item.section : "studio";
+          const figure = document.createElement("figure");
+          figure.className = "studio-photo studio-photo-user";
+          figure.dataset.gallerySection = section;
+          const mediaUrl = URL.createObjectURL(item.blob);
+          managedImageUrls.push(mediaUrl);
+          const media = item.type.startsWith("video/") ? document.createElement("video") : document.createElement("img");
+          media.src = mediaUrl;
+          if (media instanceof HTMLVideoElement) {
+            media.controls = true;
+            media.playsInline = true;
+            media.preload = "metadata";
+          } else {
+            media.alt = item.name;
+            media.loading = "lazy";
+          }
+          const caption = document.createElement("figcaption");
+          caption.className = "studio-caption";
+          caption.textContent = item.name;
+          const sequence = document.createElement("span");
+          sequence.textContent = `${String(index + 5).padStart(2, "0")} / ${gallerySectionLabels[section]}`;
+          caption.append(sequence);
+          figure.append(media, caption);
+          studioGrid.append(figure);
+        });
+        managedGalleryStatus.hidden = true;
+        if (galleryViewer.open) renderGalleryViewer();
+      } catch (error) {
+        managedGalleryStatus.hidden = false;
+        managedGalleryStatus.textContent = `Club gallery media could not be loaded from this browser: ${error.message}`;
+      }
+    }
+
+    loadManagedGallery();
+    document.addEventListener("visibilitychange", () => {
+      if (!document.hidden) loadManagedGallery();
+    });
+  </script>
+</body>
+
+</html>
